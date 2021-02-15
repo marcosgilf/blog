@@ -6,3 +6,8 @@
 # Ignore all README files
 ./CONTRIBUTING.md
 ./**/README.md
+
+node_modules/**
+/docs/_assets
+/docs/_includes
+/docs/_data

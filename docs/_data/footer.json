@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Discover",
+    "children": [
+      {
+        "text": "Blog",
+        "href": "/blog/"
+      },
+      {
+        "text": "Help and Feedback",
+        "href": "https://github.com/marcoswebdev/blog/issues"
+      }
+    ]
+  },
+  {
+    "name": "Follow",
+    "children": [
+      {
+        "text": "GitHub",
+        "href": "https://github.com/marcoswebdev/blog"
+      },
+      {
+        "text": "Twitter",
+        "href": "https://twitter.com/marcoswebdev_"
+      },
+      {
+        "text": "Instagram",
+        "href": "https://instagram.com/marcos90gil"
+      }
+    ]
+  },
+  {
+    "name": "Support",
+    "children": [
+      {
+        "text": "Contribute",
+        "href": "https://github.com/marcoswebdev/blog/blob/main/CONTRIBUTING.md"
+      }
+    ]
+  }
+]
