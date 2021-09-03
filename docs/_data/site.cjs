@@ -9,16 +9,16 @@ module.exports = async function siteConfig() {
     socialLinks: [
       {
         name: 'GitHub',
-        url: 'https://github.com/marcoswebdev/blog',
+        url: 'https://github.com/marcosgilf/blog',
       },
       {
         name: 'Twitter',
-        url: 'https://twitter.com/marcoswebdev_'
+        url: 'https://twitter.com/marcosgilf'
       }
     ],
-    gitSiteUrl: 'https://github.com/marcoswebdev/blog',
-    helpUrl: 'https://github.com/marcoswebdev/blog/issues',
-    logoAlt: '',
+    gitSiteUrl: 'https://github.com/marcosgilf/blog',
+    helpUrl: 'https://github.com/marcosgilf/blog/issues',
+    logoAlt: 'Soccer Ball',
     iconColorMaskIcon: 'white',
     iconColorMsapplicationTileColor: 'black',
     iconColorThemeColor: 'black',
