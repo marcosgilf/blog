@@ -8,7 +8,7 @@
       },
       {
         "text": "Help and Feedback",
-        "href": "https://github.com/marcoswebdev/blog/issues"
+        "href": "https://github.com/marcosgilf/blog/issues"
       }
     ]
   },
@@ -17,11 +17,11 @@
     "children": [
       {
         "text": "GitHub",
-        "href": "https://github.com/marcoswebdev/blog"
+        "href": "https://github.com/marcosgilf/blog"
       },
       {
         "text": "Twitter",
-        "href": "https://twitter.com/marcoswebdev_"
+        "href": "https://twitter.com/marcosgilf"
       },
       {
         "text": "Instagram",
@@ -34,7 +34,7 @@
     "children": [
       {
         "text": "Contribute",
-        "href": "https://github.com/marcoswebdev/blog/blob/main/CONTRIBUTING.md"
+        "href": "https://github.com/marcosgilf/blog/blob/main/CONTRIBUTING.md"
       }
     ]
   }

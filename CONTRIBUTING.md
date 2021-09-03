@@ -4,12 +4,12 @@
 
 > Please note that this project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-First, create a fork of the [marcoswebdev/blog](https://github.com/marcoswebdev/blog) repository by hitting the `fork` button on the GitHub page.
+First, create a fork of the [marcosgilf/blog](https://github.com/marcosgilf/blog) repository by hitting the `fork` button on the GitHub page.
 
 Next, clone our repository onto your computer.
 
 ```sh
-git clone git@github.com:marcoswebdev/blog.git
+git clone git@github.com:marcosgilf/blog.git
 ```
 
 Once cloning is complete, change directory to the repository.

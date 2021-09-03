@@ -7,10 +7,10 @@ callToActionItems:
     href: /blog/
   - text: About
     href: /about/
-reasonHeader: Web developer in ING 🦁
+reasonHeader: Web developer at IKEA
 reasons:
-  - header: Frontend development
-    text: No overblown tools or frontend frameworks, JavaScript, Web Components, HTML and CSS.
+  - header: Software Engineer
+    text: Eager to learn and try new things. Frontend, backend, standards.
   - header: Problem solver
     text: Problems are puzzles that can be resolved with the proper approach.
   - header: Team player

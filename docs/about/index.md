@@ -4,9 +4,11 @@ Hi!
 
 I'm Marcos Gil, a web developer based in Madrid.
 
-I'm working as a frontend engineer at ING 🦁.
+I'm working as a Software Engineer at IKEA.
 
-We are working closely with web standards, HTML, CSS and lots of javascript! We are not using frameworks, just **web components** on top of a set of common libraries:
+In my previous experience I worked as a frontend developer at ING  🦁.
+
+Where we were working closely with web standards, HTML, CSS and lots of javascript! We were not using frameworks, just **web components** on top of a set of common libraries:
 
 lit-html < lit-element < lion < ing-web
 
