@@ -45,7 +45,7 @@
     "@open-wc/eslint-config": "^4.3.0",
     "@open-wc/testing": "^2.5.33",
     "@rocket/blog": "^0.3.2",
-    "@rocket/cli": "^0.9.10",
+    "@rocket/cli": "^0.20.4",
     "@rocket/core": "^0.1.2",
     "@rocket/launch": "^0.5.5",
     "@web/test-runner": "^0.13.17",
