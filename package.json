@@ -1,67 +1,56 @@
 {
+  "private": true,
   "name": "blog",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Personal web development laboratory",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "rocket start",
-    "build": "npm run rocket:build",
-    "clean": "rm -rf _site-dev",
-    "lint": "run-p lint:*",
-    "lint:eclint": "git ls-files | xargs eclint check",
-    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
-    "lint:markdownlint": "git ls-files '*.md' | xargs markdownlint",
-    "lint:prettier": "prettier \"**/*.js\" --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
-    "format": "npm run format:eslint && npm run format:prettier",
-    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/**/*.{js,mdx,md}\" --write",
-    "release": "standard-version",
-    "rocket:build": "node node_modules/@rocket/cli/src/cli.js build",
-    "test": "wtr packages/**/test/**/*.test.js --node-resolve"
-  },
+  "license": "MIT",
+  "author": "Marcos Gil <marcosgilf.com>",
+  "homepage": "https://marcosgilf.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marcosgilf/blog.git",
     "https": "https://github.com/marcosgilf/blog.git",
     "editUrl": "https://github.com/marcosgilf/blog/-/edit/master"
   },
-  "keywords": [
-    "11ty",
-    "rocket",
-    "modern-web",
-    "markdown",
-    "webcomponents"
-  ],
-  "author": "Marcos Gil <marcosgilf.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/marcosgilf/blog/issues"
   },
-  "homepage": "https://marcosgilf.com",
-  "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@open-wc/eslint-config": "^4.3.0",
-    "@open-wc/testing": "^2.5.33",
-    "@rocket/blog": "^0.3.2",
-    "@rocket/cli": "^0.9.10",
-    "@rocket/core": "^0.1.2",
-    "@rocket/launch": "^0.5.5",
-    "@web/test-runner": "^0.13.17",
-    "eclint": "^2.8.1",
-    "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.1.2",
-    "markdownlint-cli": "^0.28.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.2",
-    "prettier-plugin-package": "^1.3.0",
-    "standard-version": "^9.3.1"
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "format:eslint": "npx eslint --fix",
+    "format:prettier": "prettier \"**/**/*.{js,mdx,md}\" --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "npx eslint",
+    "lint:prettier": "prettier \"**/*.js\" --list-different --ignore-path .eslintignore || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "prepare": "husky",
+    "preview": "astro preview",
+    "start": "astro dev"
   },
   "dependencies": {
-    "lit-element": "^2.5.1"
+    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/rss": "^4.0.4",
+    "@astrojs/sitemap": "^3.0.5",
+    "astro": "^4.2.6"
   },
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.7",
+    "lint-staged": "^15.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.2.4",
+    "prettier-package-json": "^2.8.0"
+  },
+  "keywords": [
+    "astro",
+    "markdown",
+    "modern-web"
+  ],
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
