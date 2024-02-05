@@ -9,11 +9,22 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      .profile {
+        border-radius: 100%;
+        width: 200px;
+        aspect-ratio: 1;
+        max-inline-size: 100%;
+        block-size: auto;
+        object-fit: cover;
+      }
+    </style>
   </head>
   <body>
     <Header title={SITE_TITLE} />
     <main>
-      <h1>Hello!</h1>
+      <img class="profile" src="/marcos-gil-profile.jpg" alt="" />
+      <h1>Hi! I'm Marcos Gil</h1>
       <p>
         Welcome to my personal space on the internet. I'm a software engineer based in Madrid,
         Spain, currently working at <a href="https://www.IKEA.com/">IKEA</a>. Here, I share my
