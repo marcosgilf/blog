@@ -19,6 +19,8 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
+    "dependencies:check": "ncu -e 2",
+    "dependencies:update": "ncu -u && npm i",
     "dev": "astro dev",
     "format": "npm run format:eslint && npm run format:prettier",
     "format:eslint": "npx eslint --fix",
@@ -32,16 +34,17 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^2.1.1",
-    "@astrojs/rss": "^4.0.4",
-    "@astrojs/sitemap": "^3.0.5",
-    "astro": "^4.3.2"
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
+    "astro": "^4.4.6"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.6.0",
-    "@commitlint/config-conventional": "^18.6.0",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "eslint-config-prettier": "^9.1.0",
-    "husky": "^9.0.10",
+    "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
+    "npm-check-updates": "^16.14.15",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "prettier-package-json": "^2.8.0"
