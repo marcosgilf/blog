@@ -9,7 +9,7 @@ describe('HeaderLink', () => {
       props: {
         href: '/',
         class: 'test-class',
-        'Astro.url': { pathname: '/pathname' },
+        'Astro.url': { pathname: '/' },
       },
       slots: {
         default: 'Home',
@@ -18,15 +18,19 @@ describe('HeaderLink', () => {
     expect(result).toContain('active');
   });
 
-  it.todo('renders correctly without active state', async () => {
-    const { getByText } = await render(HeaderLink, {
+  it('renders correctly without active state', async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(HeaderLink, {
       props: {
         href: '/about',
         class: '',
         'Astro.url': { pathname: '/' },
       },
+      slots: {
+        default: 'About',
+      },
     });
-    const linkElement = getByText('About');
-    expect(linkElement).not.toHaveClass('active');
+    const classAttribute = /<a[^>]+class="([^"]*)"/i.exec(result)?.[1] ?? '';
+    expect(classAttribute.split(' ').includes('active')).toBe(false);
   });
 });
