@@ -14,7 +14,8 @@ Inside the project, you'll see the following folders and files:
 │   ├── components/
 │   ├── content/
 │   ├── layouts/
-│   └── pages/
+│   ├── pages/
+│   └── utils/
 ├── astro.config.mjs
 ├── README.md
 ├── package.json
