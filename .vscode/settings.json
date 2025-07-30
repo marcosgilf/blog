@@ -1,12 +1,4 @@
 {
-  "github.copilot.chat.codeGeneration.instructions": [
-    {
-      "file": "README.md"
-    },
-    {
-      "file": "package.json"
-    }
-  ],
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
       "file": "commitlint.config.js"
