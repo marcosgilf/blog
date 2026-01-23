@@ -31,7 +31,7 @@ jobs:
             # Get the base commit and current commit
             BASE_SHA="${{ github.event.pull_request.base.sha }}"
             HEAD_SHA="${{ github.event.pull_request.head.sha }}"
-            
+
             # Run commitlint on all commits in the PR
             npx commitlint --from="$BASE_SHA" --to="$HEAD_SHA" --verbose
           fi
@@ -59,7 +59,7 @@ jobs:
         run: |
           # Find TODO and FIXME comments and list them
           TODO_COUNT=$(grep -r "TODO\|FIXME" src/ --exclude-dir=node_modules --include="*.ts" --include="*.js" --include="*.astro" | wc -l || echo "0")
-          
+
           if [ "$TODO_COUNT" -gt 0 ]; then
             echo "⚠️ Found $TODO_COUNT TODO/FIXME comments:"
             grep -r "TODO\|FIXME" src/ --exclude-dir=node_modules --include="*.ts" --include="*.js" --include="*.astro" || true
@@ -73,16 +73,16 @@ jobs:
         run: |
           # Build the project and check the dist size
           npm run build
-          
+
           if [ -d "dist" ]; then
             DIST_SIZE=$(du -sh dist/ | cut -f1)
             echo "📦 Build output size: $DIST_SIZE"
-            
+
             # Create a simple size report
             echo "## 📊 Bundle Size Report" >> $GITHUB_STEP_SUMMARY
             echo "- **Total build size**: $DIST_SIZE" >> $GITHUB_STEP_SUMMARY
             echo "- **Files created**: $(find dist -type f | wc -l)" >> $GITHUB_STEP_SUMMARY
-            
+
             # List largest files
             echo "### Largest files:" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
@@ -112,7 +112,7 @@ jobs:
 
       - name: Start preview server
         run: npm run preview &
-        
+
       - name: Wait for server to be ready
         run: |
           timeout 30 bash -c 'until curl -f http://localhost:4321; do sleep 1; done'
@@ -125,9 +125,9 @@ jobs:
           # Test main pages for accessibility issues
           echo "Testing homepage for accessibility..."
           axe http://localhost:4321 --exit || echo "Accessibility issues found on homepage"
-          
+
           echo "Testing about page for accessibility..."
           axe http://localhost:4321/about --exit || echo "Accessibility issues found on about page"
-          
+
           echo "Testing blog page for accessibility..."
           axe http://localhost:4321/blog --exit || echo "Accessibility issues found on blog page"

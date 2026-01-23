@@ -84,19 +84,19 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `## 📸 Visual Regression Test Failed
-              
+
               Visual tests have detected changes in the UI. Please review the differences:
-              
+
               - Check the [Playwright Report](${context.payload.pull_request.html_url}/checks) for detailed comparison
               - Download the test artifacts to see the visual differences
               - If changes are intentional, run the workflow with "Update visual snapshots" option
-              
+
               **Next steps:**
               1. Review the visual changes
               2. If changes are expected, update snapshots by running the workflow manually
