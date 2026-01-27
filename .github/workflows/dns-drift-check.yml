@@ -1,0 +1,109 @@
+name: DNS drift check
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every 12 hours (GitHub cron is UTC)
+    - cron: "0 */12 * * *"
+
+jobs:
+  dns-drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dnsutils curl
+
+      - name: Check authoritative nameservers (must be Netlify/nsone)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          domain="marcosgilf.com"
+
+          expected_ns=(
+            "dns1.p06.nsone.net."
+            "dns2.p06.nsone.net."
+            "dns3.p06.nsone.net."
+            "dns4.p06.nsone.net."
+          )
+
+          actual_ns="$(dig +short NS "$domain" | sort)"
+          echo "Actual NS:"
+          echo "$actual_ns"
+
+          for ns in "${expected_ns[@]}"; do
+            if ! echo "$actual_ns" | grep -qx "$ns"; then
+              echo "ERROR: Missing expected nameserver: $ns"
+              exit 1
+            fi
+          done
+
+      - name: Check apex/www do not resolve to Squarespace
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          domain="marcosgilf.com"
+          resolver="1.1.1.1"
+
+          # Squarespace IPs you were previously resolving to
+          squarespace_ips=(
+            "198.49.23.144"
+            "198.49.23.145"
+            "198.185.159.144"
+            "198.185.159.145"
+          )
+
+          check_a_not_squarespace () {
+            local host="$1"
+            local a_records
+            a_records="$(dig @"$resolver" +short A "$host" | sort)"
+
+            echo "A($host) via $resolver:"
+            echo "$a_records"
+
+            if [ -z "$a_records" ]; then
+              echo "ERROR: No A records returned for $host"
+              exit 1
+            fi
+
+            for bad in "${squarespace_ips[@]}"; do
+              if echo "$a_records" | grep -qx "$bad"; then
+                echo "ERROR: $host resolves to Squarespace IP $bad"
+                exit 1
+              fi
+            done
+
+            # Guardrail: www should not be a Squarespace CNAME anymore (it can be empty due to ALIAS/NETLIFY-type records)
+            local cname
+            cname="$(dig @"$resolver" +short CNAME "$host" || true)"
+            if echo "$cname" | grep -qi "squarespace\|ext-sq"; then
+              echo "ERROR: $host CNAME points to Squarespace: $cname"
+              exit 1
+            fi
+          }
+
+          check_a_not_squarespace "$domain"
+          check_a_not_squarespace "www.$domain"
+
+      - name: Optional - HTTPS sanity check (no Squarespace server header)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for url in "https://marcosgilf.com" "https://www.marcosgilf.com"; do
+            echo "HEAD $url"
+            # Accept 200/301/302; fail on TLS/connection errors
+            headers="$(curl -sS -I "$url")"
+            echo "$headers" | head -n 20
+
+            # If Squarespace shows up again, that’s drift
+            if echo "$headers" | grep -qi "^Server: Squarespace"; then
+              echo "ERROR: $url is serving via Squarespace"
+              exit 1
+            fi
+          done
