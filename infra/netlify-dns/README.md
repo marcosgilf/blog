@@ -1,7 +1,10 @@
 # Netlify DNS infrastructure
 
-This folder manages the Netlify DNS zone for `marcosgilf.com` and the `www` CNAME
-record using Terraform.
+This folder manages the Netlify DNS zone for `marcosgilf.com` using Terraform.
+
+> **Note:** The `www` and apex DNS records are auto-managed by Netlify (type `NETLIFY`,
+> `managed: true`) when you connect a custom domain via the Netlify dashboard. These
+> records do not need to be defined in Terraform.
 
 ## Prerequisites
 
@@ -20,9 +23,26 @@ terraform apply -var="team_slug=<your-team>"
 
 ## Manual one-time step
 
-Update the domain registrar nameservers to the Netlify DNS nameservers shown in
-Netlify after the zone is created. Terraform cannot change registrar
-nameservers.
+Update the domain registrar nameservers to the Netlify DNS nameservers.
+Terraform cannot change registrar nameservers.
+
+### How to get the nameservers
+
+**Option 1 - Terraform output** (after apply):
+
+```sh
+terraform output nameservers
+```
+
+**Option 2 - Netlify UI**:
+
+Go to **Domains** → `marcosgilf.com` → view the **Nameservers** section.
+
+**Option 3 - Terraform state**:
+
+```sh
+terraform state show netlify_dns_zone.root | grep dns_servers
+```
 
 ## Plan to test DNS is working
 
@@ -32,10 +52,9 @@ nameservers.
    dig +short NS marcosgilf.com
    ```
 
-   Expect `dns1.p06.nsone.net`/`dns2.p06.nsone.net`/`dns3.p06.nsone.net`/`dns4.p06.nsone.net`.
+   Expect `dns1.p06.nsone.net` / `dns2.p06.nsone.net` / `dns3.p06.nsone.net` / `dns4.p06.nsone.net`.
 
-2. Verify the apex resolves to Netlify (either ALIAS/ANAME or the Netlify A
-   record):
+2. Verify the apex resolves to Netlify (auto-managed `NETLIFY` record):
 
    ```sh
    dig +short A marcosgilf.com
@@ -43,11 +62,10 @@ nameservers.
 
    Expect Netlify A values (e.g. `75.2.60.5`) once DNS propagates.
 
-3. Verify `www` resolves to the Netlify site:
+3. Verify `www` resolves to the Netlify site (auto-managed `NETLIFY` record):
 
    ```sh
-   dig +short CNAME www.marcosgilf.com
+   dig +short www.marcosgilf.com
    ```
 
-   Expect `marcosgilf.netlify.app` (or the CNAME you set via
-   `netlify_site_cname`).
+   Expect Netlify A values or CNAME to `marcosgilf.netlify.app`.

@@ -3,10 +3,5 @@ resource "netlify_dns_zone" "root" {
   team_slug = var.team_slug
 }
 
-resource "netlify_dns_record" "www" {
-  zone_id  = netlify_dns_zone.root.id
-  hostname = "www"
-  type     = "CNAME"
-  value    = var.netlify_site_cname
-  ttl      = 3600
-}
+# Note: The www and apex records are auto-managed by Netlify (type=NETLIFY, managed=true)
+# when you connect a custom domain via the dashboard. No need to manage them in Terraform.

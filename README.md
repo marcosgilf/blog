@@ -4,45 +4,114 @@
 
 Welcome to my personal blog! This is where I share my thoughts, experiences, and insights on various topics. Feel free to explore the different articles and engage in discussions.
 
+## Getting Started
+
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) (v22 or later) and npm installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/marcosgilf/blog.git
+   cd blog
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+4. Open your browser and visit [http://localhost:4321](http://localhost:4321) 🎉
+
+## Development
+
+### Running the Dev Server
+
+```sh
+npm run dev
+```
+
+This starts a local server with hot-reload. Any changes you make to `.astro`, `.md`, or `.mdx` files will instantly reflect in the browser.
+
+### Code Formatting & Linting
+
+We use **ESLint** and **Prettier** to keep the codebase clean and consistent.
+
+```sh
+# Check for linting and formatting issues
+npm run lint
+
+# Auto-fix all issues
+npm run format
+```
+
+> **Tip:** Commits are automatically checked by Husky pre-commit hooks. If you see linting errors when committing, run `npm run format` first.
+
+### Running Tests
+
+```sh
+# Run tests once
+npm run test
+
+# Run tests in watch mode (great for TDD)
+npm run test:watch
+```
+
+## Building for Production
+
+```sh
+npm run build
+```
+
+This generates a static site in the `./dist/` folder, ready for deployment.
+
+To preview the production build locally:
+
+```sh
+npm run preview
+```
+
 ## 🚀 Project Structure
 
-Inside the project, you'll see the following folders and files:
-
 ```text
-├── public/
+├── public/          # Static assets (images, fonts)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   ├── pages/
-│   └── utils/
+│   ├── components/  # Reusable Astro components
+│   ├── content/     # Blog posts (Markdown/MDX)
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # File-based routing
+│   └── utils/       # Helper functions
 ├── astro.config.mjs
-├── README.md
 ├── package.json
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- **Pages**: `.astro` or `.md` files in `src/pages/` become routes automatically
+- **Content**: Blog posts live in `src/content/blog/` with validated frontmatter
+- **Static files**: Place images and other assets in `public/`
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Learn more about [Astro's Content Collections](https://docs.astro.build/en/guides/content-collections/).
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Contributing
 
-Any static assets, like images, can be placed in the `public/` directory.
+We'd love your help! Please read our [Contributing Guide](./CONTRIBUTING.md) to learn about our development process and how to submit pull requests.
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+By participating in this project, you agree to abide by our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

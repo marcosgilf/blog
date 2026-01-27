@@ -23,3 +23,10 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+!*.tfvars.example

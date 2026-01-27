@@ -1,14 +1,11 @@
 variable "team_slug" {
-  type = string
+  type        = string
+  description = "Slug identifying the Netlify team that owns this DNS zone."
+  default     = "marcosgilf"
 }
 
 variable "domain" {
-  type    = string
-  default = "marcosgilf.com"
-}
-
-variable "netlify_site_cname" {
   type        = string
-  description = "Netlify site CNAME target for the www record."
-  default     = "marcosgilf.netlify.app"
+  description = "Root domain name for which DNS records will be managed."
+  default     = "marcosgilf.com"
 }
