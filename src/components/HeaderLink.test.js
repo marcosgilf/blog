@@ -1,5 +1,5 @@
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import HeaderLink from './HeaderLink.astro';
 
 describe('HeaderLink', () => {

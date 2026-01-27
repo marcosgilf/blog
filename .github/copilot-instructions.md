@@ -28,8 +28,9 @@ heroImage: string   # Optional (path in /public)
 | `npm run build` | Production build to `./dist/` |
 | `npm run test` | Run Vitest tests |
 | `npm run test:watch` | Tests in watch mode |
-| `npm run lint` | Run ESLint + Prettier checks |
-| `npm run format` | Auto-fix lint/format issues |
+| `npm run lint` | Run Biome linting |
+| `npm run format` | Auto-format with Biome |
+| `npm run check` | Lint + format with Biome (auto-fix) |
 
 ## Testing Conventions
 
@@ -45,9 +46,10 @@ heroImage: string   # Optional (path in /public)
 ## Code Style
 
 - **Commits**: Conventional commits enforced via commitlint (`@commitlint/config-conventional`)
-- **Pre-commit hooks**: Husky + lint-staged runs linting before commit
-- **ESLint**: Minimal config, enforces semicolons
-- **Prettier**: Formats `.js`, `.mdx`, `.md` files
+- **Pre-commit hooks**: Husky + lint-staged runs Biome before commit
+- **Biome**: Rust-based linter + formatter (replaces ESLint/Prettier); config in `biome.json`
+  - Single quotes, semicolons, trailing commas
+  - 100 char line width, 2-space indent
 
 ## Component Patterns
 
