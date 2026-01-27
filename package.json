@@ -22,12 +22,9 @@
     "dependencies:check": "ncu -e 2",
     "dependencies:update": "ncu -u && npm i",
     "dev": "astro dev",
-    "format": "npm run format:eslint && npm run format:prettier",
-    "format:eslint": "npx eslint --fix",
-    "format:prettier": "prettier \"**/**/*.{js,mdx,md}\" --write",
-    "lint": "run-p lint:*",
-    "lint:eslint": "npx eslint",
-    "lint:prettier": "prettier \"**/*.js\" --list-different --ignore-path .eslintignore || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --write .",
     "prepare": "husky",
     "preview": "astro preview",
     "start": "astro dev",
@@ -42,27 +39,18 @@
     "astro": "^5.16.15"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.13",
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@vitest/coverage-v8": "^4.0.18",
-    "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "npm-check-updates": "^19.3.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.8.1",
-    "prettier-package-json": "^2.8.0",
     "vitest": "^4.0.18"
   },
   "keywords": [
     "astro",
     "markdown",
     "modern-web"
-  ],
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "arrowParens": "avoid",
-    "trailingComma": "all"
-  }
+  ]
 }

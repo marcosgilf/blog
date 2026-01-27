@@ -1,23 +1,23 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
-      .profile {
-        border-radius: 100%;
-        width: 200px;
-        aspect-ratio: 1;
-        max-inline-size: 100%;
-        block-size: auto;
-        object-fit: cover;
-      }
+    .profile {
+      border-radius: 100%;
+      width: 200px;
+      aspect-ratio: 1;
+      max-inline-size: 100%;
+      block-size: auto;
+      object-fit: cover;
+    }
     </style>
   </head>
   <body>
@@ -28,8 +28,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       <p>
         I'm a software engineer based in Madrid, Spain, currently working at <a
           href="https://www.IKEA.com/"
-          target="_blank">IKEA</a
-        >.
+          target="_blank"
+        >IKEA</a>.
       </p>
       <p>Look.</p>
       <p>

@@ -1,4 +1,3 @@
 module.exports = {
-  '*.js': ['eslint --fix', 'prettier --write'],
-  'package.json': ['prettier-package-json --write'],
+  '*.{js,ts,json,md,mdx}': ['biome check --write --no-errors-on-unmatched'],
 };
