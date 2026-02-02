@@ -16,7 +16,7 @@ describe('SocialIcons', () => {
     const result = await container.renderToString(SocialIcons);
 
     // Each link should have sr-only text describing the action
-    expect(result).toContain('Follow me on Twitter');
+    expect(result).toContain('Follow me on X');
     expect(result).toContain('Go to my GitHub page');
     expect(result).toContain('Go to my LinkedIn page');
   });
@@ -43,7 +43,7 @@ describe('SocialIcons', () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(SocialIcons);
 
-    expect(result).toContain('href="https://twitter.com/marcosgilf"');
+    expect(result).toContain('href="https://x.com/marcosgilf"');
     expect(result).toContain('href="https://github.com/marcosgilf"');
     expect(result).toContain('href="https://www.linkedin.com/in/marcosgilfernandez/');
   });
