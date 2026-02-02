@@ -56,7 +56,7 @@ const posts = sortPosts(await getCollection('blog'));
         align-items: baseline;
       }
 
-      article h4 {
+      article h2 {
         margin: 0;
         color: var(--color-text);
         line-height: 1;
@@ -73,7 +73,7 @@ const posts = sortPosts(await getCollection('blog'));
         line-height: 1.5;
       }
 
-      ul li:first-child article h4 {
+      ul li:first-child article h2 {
         font-size: 2.369rem;
       }
 
@@ -92,7 +92,7 @@ const posts = sortPosts(await getCollection('blog'));
           gap: 0.5rem;
         }
 
-        ul li:first-child article h4 {
+        ul li:first-child article h2 {
           font-size: 1.563em;
         }
       }
@@ -109,10 +109,8 @@ const posts = sortPosts(await getCollection('blog'));
                 <a href={`/blog/${post.slug}/`}>
                   <article>
                     <header>
-                      <h4>{post.data.title}</h4>
-                      <time datetime={post.data.pubDate.toISOString()}>
-                        <FormattedDate date={post.data.pubDate} />
-                      </time>
+                      <h2>{post.data.title}</h2>
+                      <FormattedDate date={post.data.pubDate} />
                     </header>
                     <p>{post.data.description}</p>
                   </article>

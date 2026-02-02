@@ -45,6 +45,6 @@ describe('SocialIcons', () => {
 
     expect(result).toContain('href="https://x.com/marcosgilf"');
     expect(result).toContain('href="https://github.com/marcosgilf"');
-    expect(result).toContain('href="https://www.linkedin.com/in/marcosgilfernandez/');
+    expect(result).toContain('href="https://www.linkedin.com/in/marcosgilfernandez/?locale=en_US"');
   });
 });
