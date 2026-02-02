@@ -1,16 +1,17 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
-import SocialIcons from './SocialIcons.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header>
   <nav>
     <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
+    <div>
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
+      <ThemeToggle />
     </div>
   </nav>
 </header>
@@ -18,31 +19,43 @@ import SocialIcons from './SocialIcons.astro';
 header {
   margin: 0;
   padding: 0 1em;
-  background: white;
-  box-shadow: 0 2px 8px rgba(var(--black), 5%);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
 }
-h2 {
+
+header h2 {
   margin: 0;
   font-size: 1em;
 }
 
-h2 a,
-h2 a.active {
+header h2 a {
   text-decoration: none;
+  color: var(--color-text);
 }
-nav {
+
+header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-nav a {
+
+header nav > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+header nav a {
   padding: 1em 0.5em;
-  color: var(--black);
-  border-bottom: 4px solid transparent;
+  color: var(--color-text);
   text-decoration: none;
 }
-nav a.active {
-  text-decoration: none;
-  border-bottom-color: var(--accent);
+
+header nav a:hover {
+  color: var(--color-accent);
+}
+
+header nav a[aria-current="page"] {
+  border-bottom: 4px solid var(--color-accent);
 }
 </style>
