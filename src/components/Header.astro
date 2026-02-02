@@ -1,7 +1,7 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
-import SocialIcons from './SocialIcons.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header>
@@ -11,6 +11,7 @@ import SocialIcons from './SocialIcons.astro';
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
+      <ThemeToggle />
     </div>
   </nav>
 </header>
@@ -40,6 +41,7 @@ header nav {
 
 header nav > div {
   display: flex;
+  align-items: center;
   gap: 0.5em;
 }
 
