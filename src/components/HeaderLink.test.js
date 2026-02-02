@@ -15,7 +15,7 @@ describe('HeaderLink', () => {
         default: 'Home',
       },
     });
-    expect(result).toContain('active');
+    expect(result).toContain('aria-current="page"');
   });
 
   it('renders correctly without active state', async () => {
@@ -30,7 +30,6 @@ describe('HeaderLink', () => {
         default: 'About',
       },
     });
-    const classAttribute = /<a[^>]+class="([^"]*)"/i.exec(result)?.[1] ?? '';
-    expect(classAttribute.split(' ').includes('active')).toBe(false);
+    expect(result).not.toContain('aria-current');
   });
 });

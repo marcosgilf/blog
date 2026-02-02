@@ -18,6 +18,7 @@ const posts = sortPosts(await getCollection('blog'));
       main {
         width: 960px;
       }
+
       ul {
         display: flex;
         flex-wrap: wrap;
@@ -26,69 +27,72 @@ const posts = sortPosts(await getCollection('blog'));
         margin: 0;
         padding: 0;
       }
+
       ul li {
         width: 100%;
       }
-      ul li * {
-        text-decoration: none;
-        transition: 0.2s ease;
-      }
-      ul li:first-child {
-        width: 100%;
-        margin-bottom: 1rem;
-        display: flex;
-        flex-direction: row;
-      }
-      ul li:first-child .title {
-        font-size: 2.369rem;
-      }
-      ul li img {
-        margin-bottom: 0.5rem;
-        border-radius: 12px;
-      }
+
       ul li a {
         display: flex;
         flex-direction: column;
+        text-decoration: none;
+        transition: 0.2s ease;
       }
-      .heading {
+
+      ul li a:hover {
+        color: var(--color-accent);
+      }
+
+      ul li a:hover h4,
+      ul li a:hover time,
+      ul li a:hover p {
+        color: var(--color-accent);
+      }
+
+      article header {
         display: flex;
         flex-direction: row;
         gap: 1rem;
+        align-items: baseline;
       }
-      .title {
+
+      article h4 {
         margin: 0;
-        color: rgb(var(--black));
+        color: var(--color-text);
         line-height: 1;
       }
-      .date {
+
+      article time {
         margin: 0;
-        color: rgb(var(--gray));
+        color: var(--color-text-secondary);
       }
-      .description {
+
+      article p {
         margin: 0;
-        color: rgb(var(--gray));
+        color: var(--color-text-secondary);
         line-height: 1.5;
       }
-      ul li a:hover .title,
-      ul li a:hover .date,
-      ul li a:hover .description {
-        color: rgb(var(--accent));
+
+      ul li:first-child article h4 {
+        font-size: 2.369rem;
       }
-      ul a:hover img {
-        box-shadow: var(--box-shadow);
-      }
+
       @media (max-width: 720px) {
         ul {
           gap: 0.5em;
         }
+
         ul li {
           width: 100%;
           text-align: center;
         }
-        ul li:first-child {
-          margin-bottom: 0;
+
+        article header {
+          flex-direction: column;
+          gap: 0.5rem;
         }
-        ul li:first-child .title {
+
+        ul li:first-child article h4 {
           font-size: 1.563em;
         }
       }
@@ -103,13 +107,15 @@ const posts = sortPosts(await getCollection('blog'));
             posts.map(post => (
               <li>
                 <a href={`/blog/${post.slug}/`}>
-                  <div class="heading">
-                    <h4 class="title">{post.data.title}</h4>
-                    <p class="date">
-                      <FormattedDate date={post.data.pubDate} />
-                    </p>
-                  </div>
-                  <p class="description">{post.data.description}</p>
+                  <article>
+                    <header>
+                      <h4>{post.data.title}</h4>
+                      <time datetime={post.data.pubDate.toISOString()}>
+                        <FormattedDate date={post.data.pubDate} />
+                      </time>
+                    </header>
+                    <p>{post.data.description}</p>
+                  </article>
                 </a>
               </li>
             ))
@@ -117,6 +123,6 @@ const posts = sortPosts(await getCollection('blog'));
         </ul>
       </section>
     </main>
-    <!-- <Footer /> -->
+    <Footer />
   </body>
 </html>

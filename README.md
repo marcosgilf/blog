@@ -108,9 +108,6 @@ We'd love your help! Please read our [Contributing Guide](./CONTRIBUTING.md) to 
 
 By participating in this project, you agree to abide by our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
 
 ## License
 
