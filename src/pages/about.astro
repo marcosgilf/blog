@@ -1,13 +1,75 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION } from '../consts';
+import { getPageTitle } from '../utils/title';
+
+const title = 'About Me';
+const description =
+  'Senior Software Engineer with 10+ years of experience in web development, architecture, and quality engineering.';
+const pubDate = new Date('January 30 2024');
+const updatedDate = new Date('February 4 2026');
 ---
 
-<Layout
-  title="About Me"
-  description="Senior Software Engineer with 10+ years of experience in web development, architecture, and quality engineering."
-  pubDate={new Date('January 30 2024')}
-  updatedDate={new Date('February 4 2026')}
->
+<html lang="en">
+  <head>
+    <BaseHead title={getPageTitle(['About Me'])} description={description} />
+    <style>
+      article {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+      }
+
+      article header {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+      }
+
+      article header h1 {
+        margin: 0 0 0.5em 0;
+      }
+
+      article header time {
+        display: block;
+        color: var(--color-text-secondary);
+        margin-bottom: 0.5em;
+      }
+
+      article header p {
+        font-style: italic;
+        color: var(--color-text-secondary);
+        margin-bottom: 0.5em;
+      }
+
+      article section p {
+        margin-bottom: 2em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+        <header>
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <p>
+                Last updated on <FormattedDate date={updatedDate} />
+              </p>
+            )
+          }
+          <h1>{title}</h1>
+          <hr />
+        </header>
+        <section>
   <p>
     Senior Software Engineer with over a decade of experience building production-grade web applications.
     I bring a strong foundation in systems thinking, engineering rigor, and cross-layer understanding
@@ -108,4 +170,9 @@ import Layout from '../layouts/BlogPost.astro';
       rel="noopener noreferrer"
     >LinkedIn</a>.
   </p>
-</Layout>
+        </section>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

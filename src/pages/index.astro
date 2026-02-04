@@ -1,13 +1,14 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION } from '../consts';
+import { getPageTitle } from '../utils/title';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={getPageTitle()} description={SITE_DESCRIPTION} />
     <style>
     header {
       display: flex;
