@@ -1,13 +1,14 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION } from '../consts';
+import { getPageTitle } from '../utils/title';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={getPageTitle()} description={SITE_DESCRIPTION} />
     <style>
     header {
       display: flex;
@@ -32,10 +33,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
       <ThemeToggle />
     </header>
     <main>
-      <figure>
-        <img src="/marcos-gil-profile.jpg" alt="Profile photo of Marcos Gil" />
-      </figure>
-      <h1>Hi! I'm Marcos Gil</h1>
+      <h1>Hola! I'm Marcos Gil</h1>
       <p>Welcome to my personal space on the internet.</p>
       <p>
         I'm a software engineer based in Madrid, Spain, currently working at <a
@@ -49,6 +47,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
         Here, I share my thoughts, experiences, and insights on software development and beyond.
         Join me as we explore the world together.
       </p>
+      <p>
+        Currently, I'm digging into the AI world, I'm using it heavily for programming and I'm investigating the agents landscape.
+      </p>
       <p>Now that you are here, you can learn more about me in:</p>
       <nav>
         <ul>
@@ -60,6 +61,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
           </li>
         </ul>
       </nav>
+      <figure>
+        <img src="/marcos-gil-profile.jpg" alt="Profile photo of Marcos Gil" />
+      </figure>
     </main>
   </body>
 </html>

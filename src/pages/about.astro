@@ -1,99 +1,143 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION } from '../consts';
+import { getPageTitle } from '../utils/title';
+
+const title = 'About Me';
+const description =
+  'Senior Software Engineer with 10+ years of experience in web development, architecture, and quality engineering.';
+const pubDate = new Date('January 30 2024');
+const updatedDate = new Date('February 4 2026');
 ---
 
-<Layout
-  title="About Me"
-  description="Lorem ipsum dolor sit amet"
-  pubDate={new Date('January 30 2024')}
-  updatedDate={new Date('March 1 2024')}
->
-  <p>Happy to see you in this section! 👋</p>
+<html lang="en">
+  <head>
+    <BaseHead title={getPageTitle(['About Me'])} description={description} />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+        <header>
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <p>
+                Last updated on <FormattedDate date={updatedDate} />
+              </p>
+            )
+          }
+          <h1>{title}</h1>
+          <hr />
+        </header>
+        <section>
   <p>
-    I’m a web developer advocate with a fiery passion for all things tech. Whether it’s the latest
-    software trends, UX/UI magic, accessibility wizardry, or QA sorcery, I’m all ears! 🌟
-  </p>
-  <h2>My Mission 🎯</h2>
-  <p>
-    Every day, I wake up with one goal: to create a digital symphony that resonates across the web.
-    My secret sauce? A versatile and resilient profile that dances between code and creativity. 🎶
+    Senior Software Engineer with over a decade of experience building production-grade web applications.
+    I bring a strong foundation in systems thinking, engineering rigor, and cross-layer understanding
+    spanning frontend, backend, DevOps, and quality engineering.
   </p>
 
-  <h2>Where I Hang My Code Hat 🏠</h2>
+  <h2>Current Focus: Applied AI Engineering</h2>
   <p>
-    Currently, I’m weaving digital dreams as a Software Engineer at IKEA. Specifically, I groove in
-    the Digital Hub nestled in sunny San Sebastián de los Reyes, Madrid. We call it “Madhult,” and
-    it’s where these IKEA’s digital developments happens:
+    I'm actively transitioning into <strong>Applied AI Engineering</strong>, focusing on building
+    production-grade AI agents and automation systems. My interests include:
   </p>
   <ul>
-    <li>IKEA for Business</li>
-    <li>IKEA Physical Meeting Points</li>
-    <li>IKEA Food</li>
+    <li><strong>AI Agent Systems</strong> — Tool-using agents with loops, memory, and measurable evaluation</li>
+    <li><strong>Skills Libraries</strong> — Modular, composable primitives that teams can assemble into workflows</li>
+    <li><strong>Agent Reliability</strong> — Observability, tracing, retries, and regression testing for agentic systems</li>
+    <li><strong>Workflow Automation</strong> — Autonomous workflows for business operations with human-in-the-loop patterns</li>
+    <li><strong>AI Development Environments</strong> — Templates, patterns, and documentation that enable teams to ship AI-powered features</li>
   </ul>
-
-  <h2>IKEA for Business 🛒</h2>
   <p>
-    My job? To untangle the digital knots for our business-savvy clients. From unraveling UX
-    mysteries to sprinkling React spells, I’m here to make their buying journey a breeze. 💼
+    I approach AI engineering with the same production mindset I bring to traditional software:
+    if it can't be evaluated and reproduced, it's not done.
   </p>
 
-  <h3>My Tech Toolbox 🛠️</h3>
-  <p>When I’m not sipping virtual coffee, you’ll find me juggling an array of tech goodies:</p>
+  <h2>Core Competencies</h2>
+  <h3>Frontend & UI Engineering</h3>
   <ul>
-    <li>React: My trusty sidekick for crafting pixel-perfect experiences.</li>
-    <li>Sass: Because plain CSS is so last season.</li>
-    <li>Vitest and Jest: My testing buddies—always keeping me on my toes.</li>
-    <li>Vite and Webpack: The dynamic duo behind lightning-fast builds.</li>
-    <li>Storybook: Where UI components come alive.</li>
-    <li>Eslint, Prettier, Husky: My code quality guardians.</li>
-    <li>Node JS: My backstage pass to server-side magic.</li>
-    <li>Express: For those smooth API vibes.</li>
-    <li>Javascript and Typescript: My dynamic duo for scripting adventures.</li>
-    <li>Git and Github: Where version control meets collaboration.</li>
-    <li>CI/CD, Github Actions: Because automated pipelines are my jam.</li>
-    <li>Infrastructure as Code with Terraform: Building castles in the cloud.</li>
-    <li>GCP: My playground for scaling dreams.</li>
-    <li>
-      Agile Methodologies: Because life’s too short for waterfall. Sometime Kanban others Sprints,
-      you name it.
-    </li>
+    <li>React ecosystem with TypeScript</li>
+    <li>Component-driven development with Storybook</li>
+    <li>Modern CSS (Sass, CSS Custom Properties, CSS Grid)</li>
+    <li>Accessibility (A11y) and UX best practices</li>
   </ul>
 
-  <h2>Flashback: ING Days 🦁</h2>
-  <p>
-    Before my IKEA escapades, I was a frontend wizard at ING. Picture this: a multi-country banking
-    platform, powered by cutting-edge tech. Web standards, Polymer, Web Components, ES6, CSS Custom
-    Properties, and CSS Grid—we threw them all into the cauldron. The result? A digital potion that
-    worked seamlessly across ING Group countries. 🌐
-  </p>
-
-  <h2>Beginnings in Babel 📳</h2>
-  <p>In the past, I’ve donned various hats:</p>
+  <h3>Quality & Testing</h3>
   <ul>
-    <li>Front Backbone and Marionette: My fullstack tango partners.</li>
-    <li>JQuery: My trusty sidekick in the JavaScript wild west.</li>
-    <li>Stylus: Because styles deserve some love too.</li>
-    <li>Gulp: My gulp of productivity.</li>
-    <li>REST APIs with Spring MVC, JSF, Facelets, JSTL: Where Java met my backend soul.</li>
-    <li>JBoss, Eclipse, STS: My command center.</li>
-    <li>MySQL (PL / SQL): Where data danced to my queries.</li>
-    <li>Agile and BBD (Concordion and Selenium): My secret weapons.</li>
+    <li>Unit and integration testing with Vitest/Jest</li>
+    <li>End-to-end testing strategies</li>
+    <li>Code quality tooling (ESLint, Prettier, Biome)</li>
+    <li>Pre-commit hooks and automated checks (Husky, lint-staged)</li>
   </ul>
 
-  <h2>The Prelude 🎶</h2>
+  <h3>Backend & Infrastructure</h3>
+  <ul>
+    <li>Node.js and Express for API development</li>
+    <li>CI/CD pipelines with GitHub Actions</li>
+    <li>Infrastructure as Code with Terraform</li>
+    <li>Cloud platforms (GCP)</li>
+  </ul>
+
+  <h3>Engineering Practices</h3>
+  <ul>
+    <li>Systems architecture and design</li>
+    <li>Agile methodologies (Kanban, Scrum)</li>
+    <li>Version control and collaborative workflows (Git, GitHub)</li>
+    <li>Production-first mindset with observability and reliability focus</li>
+  </ul>
+
+  <h2>Current Role: IKEA</h2>
   <p>
-    I completed my Degree in Industrial Technology Engineering with focus in automation and
-    electronics in Universidad Politécnica de Madrid.
+    Senior Software Engineer at IKEA Digital Hub in Madrid ("Madhult"), where I work on digital products
+    serving business clients and in-store experiences:
   </p>
-  <p>But Software is my thing so I looked for something to start in this sector.</p>
-  <p>Babel brought the opportunity to transition.</p>
-  <p>And I have never looked back. ✨</p>
-  <p>Thanks to get to this point!🥰</p>
+  <ul>
+    <li><strong>IKEA for Business</strong> — B2B e-commerce platform optimizing the purchasing journey</li>
+    <li><strong>Physical Meeting Points</strong> — Digital touchpoints for in-store customer interactions</li>
+    <li><strong>IKEA Food</strong> — Digital solutions for food service operations</li>
+  </ul>
+
+  <h2>Previous Experience</h2>
+  <h3>ING</h3>
   <p>
-    If you want to know more or to contact me. You can find me in my <a
+    Frontend engineer on a multi-country banking platform, implementing web standards-based architecture
+    with Polymer, Web Components, ES6, and CSS Grid. Delivered a scalable solution deployed across
+    ING Group countries.
+  </p>
+
+  <h3>Babel</h3>
+  <p>
+    Full-stack development with Java backend (Spring MVC, JSF) and JavaScript frontend (Backbone, Marionette).
+    Practiced BDD with Concordion and Selenium for automated acceptance testing.
+  </p>
+
+  <h2>Education</h2>
+  <p>
+    <strong>Degree in Industrial Technology Engineering</strong><br />
+    Universidad Politécnica de Madrid<br />
+    Specialization in Automation and Electronics
+  </p>
+  <p>
+    Transitioned from industrial engineering to software development, combining analytical foundations
+    with a passion for building digital products.
+  </p>
+
+  <h2>Get in Touch</h2>
+  <p>
+    Interested in connecting? Find me on <a
       href="https://www.linkedin.com/in/marcosgilfernandez/?locale=en_US"
       target="_blank"
       rel="noopener noreferrer"
-    >Linkedin profile</a>
+    >LinkedIn</a>.
   </p>
-</Layout>
+        </section>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
