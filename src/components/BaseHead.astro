@@ -12,6 +12,11 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+
+const trackEndpoint = import.meta.env.PUBLIC_TRACK_ENDPOINT ?? '/api/track';
+const trackSiteId = import.meta.env.PUBLIC_TRACK_SITE_ID ?? 'blog';
+const trackEnabled = import.meta.env.PUBLIC_TRACK_ENABLED ?? 'false';
+const isDev = import.meta.env.DEV;
 ---
 
 <!-- Global Metadata -->
@@ -32,6 +37,38 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+
+<!-- Visit tracking -->
+<script
+  is:inline
+  define:vars={{ trackEndpoint, trackSiteId, trackEnabled, isDev }}
+>
+  (function () {
+    if (trackEnabled === 'false' || isDev || !trackEndpoint) {
+      return;
+    }
+
+    const payload = {
+      path: window.location.pathname,
+      siteId: trackSiteId,
+    };
+
+    const body = JSON.stringify(payload);
+
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      navigator.sendBeacon(trackEndpoint, blob);
+      return;
+    }
+
+    fetch(trackEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+      keepalive: true,
+    }).catch(() => undefined);
+  })();
+</script>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
