@@ -15,11 +15,21 @@ This folder manages the Netlify DNS zone for `marcosgilf.com` using Terraform.
 ## Usage
 
 ```sh
-cd infra/netlify-dns
+cd infra/netlify
 terraform init
-terraform plan -var="team_slug=<your-team>"
-terraform apply -var="team_slug=<your-team>"
+terraform plan -var="team_slug=<your-team>" -var="team_id=<your-team-id>"
+terraform apply -var="team_slug=<your-team>" -var="team_id=<your-team-id>"
 ```
+
+> Note: Netlify free tier does not allow setting scoped secrets via API. Set
+> `INFLUX_TOKEN` manually in the Netlify UI (production context).
+
+Optional variables:
+- `public_track_site_id` (default `blog`)
+- `public_track_enabled` (default `true`)
+
+Note: variables are applied to the `production` context only to avoid
+tracking deploy previews.
 
 ## Manual one-time step
 
