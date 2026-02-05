@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-const escapeTagValue = (value: string) => value.replace(/[,= ]/g, '\\$&');
+const escapeTagValue = (value: string) => value.replace(/[\\,= ]/g, '\\$&');
 
 export const POST: APIRoute = async ({ request }) => {
   let payload: { path?: unknown; siteId?: unknown };
