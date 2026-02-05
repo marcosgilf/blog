@@ -30,3 +30,6 @@ pnpm-debug.log*
 *.tfstate.backup
 *.tfvars
 !*.tfvars.example
+
+# Local Netlify folder
+.netlify
