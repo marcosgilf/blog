@@ -12,13 +12,3 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 <a href={href} class:list={[className]} aria-current={isActive ? 'page' : undefined} {...props}>
   <slot />
 </a>
-<style>
-a {
-	display: inline-block;
-	text-decoration: none;
-}
-
-a[aria-current="page"] {
-	font-weight: bolder;
-}
-</style>
