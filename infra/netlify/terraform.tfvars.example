@@ -1,0 +1,9 @@
+site_id     = "your-netlify-site-id"
+team_id     = "your-netlify-team-id"
+influx_url  = "https://your-influxdb-url"
+influx_org  = "your-org-name"
+influx_bucket = "your-bucket-name"
+
+# Optional overrides
+# public_track_site_id = "blog"
+# public_track_enabled = "true"
