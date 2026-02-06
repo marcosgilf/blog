@@ -9,46 +9,10 @@
   aria-pressed="false"
 >
   <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-    <path class="sun" d="M12 3V1m0 22v-2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 3V1m0 22v-2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </button>
-
-<style>
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5em;
-    color: var(--color-text);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease;
-  }
-
-  button:hover {
-    background-color: var(--color-bg-secondary);
-  }
-
-  button:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-  }
-
-  svg path.moon {
-    display: none;
-  }
-
-  button[aria-pressed="true"] svg path.sun {
-    display: none;
-  }
-
-  button[aria-pressed="true"] svg path.moon {
-    display: block;
-  }
-</style>
 
 <script>
   function initThemeToggle() {
