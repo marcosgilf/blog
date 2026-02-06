@@ -1,8 +1,12 @@
 import type { APIRoute } from 'astro';
+import {
+  escapeTagValue,
+  getCountryFromHeaders,
+  normalizeReferrer,
+  parseUserAgent,
+} from '../../utils/track';
 
 export const prerender = false;
-
-const escapeTagValue = (value: string) => value.replace(/[\\,= ]/g, '\\$&');
 
 export const POST: APIRoute = async ({ request }) => {
   let payload: { path?: unknown; siteId?: unknown };
@@ -43,6 +47,25 @@ export const POST: APIRoute = async ({ request }) => {
   const tags = [`path=${escapeTagValue(path)}`];
   if (siteId) {
     tags.push(`site=${escapeTagValue(siteId)}`);
+  }
+
+  const country = getCountryFromHeaders(request.headers);
+  if (country) {
+    tags.push(`country=${escapeTagValue(country)}`);
+  }
+
+  const userAgent = request.headers.get('user-agent') ?? '';
+  const parsedUa = parseUserAgent(userAgent);
+  if (parsedUa) {
+    tags.push(`device=${escapeTagValue(parsedUa.device)}`);
+    tags.push(`browser=${escapeTagValue(parsedUa.browser)}`);
+    tags.push(`os=${escapeTagValue(parsedUa.os)}`);
+  }
+
+  const referrerHeader = request.headers.get('referer') ?? request.headers.get('referrer') ?? '';
+  const referrer = normalizeReferrer(referrerHeader);
+  if (referrer) {
+    tags.push(`referrer=${escapeTagValue(referrer)}`);
   }
 
   const lineProtocol = `page_view,${tags.join(',')} count=1 ${timestamp}`;

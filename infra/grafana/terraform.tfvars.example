@@ -1,0 +1,7 @@
+grafana_url = "https://YOURSTACK.grafana.net"
+grafana_api_token = "YOUR_API_TOKEN"
+grafana_org_id = 1
+
+# Optional
+# dashboard_folder = "Web Analytics"
+# dashboards_path = "./dashboards"
