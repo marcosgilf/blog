@@ -79,3 +79,10 @@ terraform state show netlify_dns_zone.root | grep dns_servers
    ```
 
    Expect Netlify A values or CNAME to `marcosgilf.netlify.app`.
+
+## Deploy preview subdomain
+
+Deploy previews use Netlify's automatic deploy subdomain set in the Netlify UI
+(example: `dev.marcosgilf.com`). This requires the root domain to be on Netlify DNS,
+which this Terraform module already manages. No additional DNS records are needed in
+Terraform for the deploy preview subdomain.

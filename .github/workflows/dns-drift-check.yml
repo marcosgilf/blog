@@ -3,8 +3,8 @@ name: DNS drift check
 on:
   workflow_dispatch:
   schedule:
-    # Every 12 hours (GitHub cron is UTC)
-    - cron: "0 */12 * * *"
+    # Every 24 hours (GitHub cron is UTC)
+    - cron: '0 0 * * *'
 
 jobs:
   dns-drift:
