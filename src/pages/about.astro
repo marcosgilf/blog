@@ -9,7 +9,7 @@ import { getPageTitle } from '../utils/title';
 const title = 'About Me';
 const description =
   'Senior Software Engineer with 10+ years of experience in web development, architecture, and quality engineering.';
-const pubDate = new Date('January 30 2024');
+// const pubDate = new Date('January 30 2024');
 const updatedDate = new Date('February 4 2026');
 ---
 
@@ -23,7 +23,6 @@ const updatedDate = new Date('February 4 2026');
     <main>
       <article>
         <header>
-          <FormattedDate date={pubDate} />
           {
             updatedDate && (
               <p>
