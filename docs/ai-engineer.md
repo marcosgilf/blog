@@ -1,341 +1,181 @@
 # AI Engineer — Applied Agentic Engineering
 
+## Document Control
+
+| Version | Date | Source | Notes |
+|---|---|---|---|
+| v1 | 2026-01-23 | Commit `c22992c` (`docs: ai engineer plan`) | Initial AI Engineer direction with phase-based schedule constraints. |
+| v2 | 2026-02-18 | `instructions-v2.md`, `plan-v2.md`, nanobot specs (`iac.md`, `llm-router.md`, `memory-manager.md`, `wodbuster-booker.md`) | Preserves AI Engineer framing, removes fixed cadence, defines iterative execution, and aligns the roadmap with 2026–2027 AI trends. |
+
+---
+
 ## Purpose
 
-This document defines the long-term goal, current baseline, and high-level execution plan to deliberately transition from **Senior Software Engineer** to **Applied AI Engineer** focused on building production-grade AI agents and automation systems.
+This document defines the long-term direction to become an **AI Engineer** focused on building production-grade AI systems.  
+The current starting domain is **AI Agents**, because it combines runtime engineering, tool orchestration, evaluation, automation, and operational rigor.
 
-This is not a learning plan.
-This is a **professional identity shift**.
+This is a professional identity shift, executed through small and continuous delivery.
 
 ---
 
 ## North Star Goal
 
-Become an **Applied AI Engineer** capable of:
+Become an **AI Engineer** capable of:
 
-* Building **production AI agents** for business automation
-* Designing **modular, composable skills** (primitives) that teams can compose into workflows
-* Shipping autonomous workflows across sales, marketing, and operations
-* Owning the **AI development environment** (AI coding tools, templates, patterns, docs)
+- Building production AI systems with clear operational and quality guarantees.
+- Designing tool-using agents that are measurable, reliable, and controllable.
+- Shipping automation workflows with real integration boundaries and auditability.
+- Owning AI engineering standards: evals, observability, safety controls, and delivery playbooks.
 
-Target role archetypes (ordered by priority):
+Target role archetypes:
 
-1. **Senior Software Engineer, Applied AI**
-2. **AI Agent Engineer**
-3. **AI Automation Engineer**
-4. **AI Infrastructure Engineer**
+1. Senior Software Engineer, AI Engineer
+2. AI Agent Engineer
+3. AI Automation Engineer
+4. AI Infrastructure Engineer
 
-Explicit non-goal:
+---
 
-* Generic "AI integration" / shallow API demos
-* Prompt-only "agent" demos without evaluation, observability, or real automation
-* Research-only work without shippable systems
-* Core LLM/model development (deferred to future phase)
+## Scope for 2026–2027
+
+Initial specialization path:
+
+- AI Agents as the first execution domain.
+
+Long-term capability profile:
+
+- Agent runtime engineering.
+- Evaluation and regression systems.
+- Workflow automation and integrations.
+- Security and policy controls for autonomous systems.
+- Reliability and observability in production.
+- AI-enabled developer productivity and async operations.
+
+This keeps the identity broad as AI Engineer while using agents as the practical entry point.
+
+---
+
+## Current Starting Point
+
+The current work starts in **Nanobot** because it has the lowest learning curve and immediate deployability for real workflows.
+
+Why this is the right starting point:
+
+- Existing IaC and deploy pipeline already running.
+- Active skills (`memory-manager`, `wodbuster-booker`) and router (`llm-router`) provide realistic engineering surfaces.
+- Immediate feedback loops exist via tests, logs, and operational scripts.
+
+Boundary:
+
+- Nanobot is a launchpad for capability development.
+- Nanobot is not the final platform boundary for this roadmap.
 
 ---
 
 ## Definition of Success
 
-This journey is successful when **at least 3 of the following are true**:
+This journey is successful when at least three outcomes are true:
 
-* I can ship a tool-using agent that reliably executes multi-step workflows with measurable success criteria
-* I can build a **Skills library** (clean abstractions + schemas + docs) that a non-technical user can compose
-* I can productionize agents: logs/traces, retries, rate-limit handling, idempotency, run artifacts, regression tests
-* I can integrate with business systems (or faithful mocks) like CRM, docs, and chat platforms
-* I have public artifacts and write-ups that demonstrate end-to-end agentic systems and are easy to evaluate
-* My profile is credible to AI-native hiring loops
-* I can collaborate productively with AI researchers and product teams
+- Tool-using agent systems are shipped with replayable artifacts and measurable quality.
+- Evaluation and regression become standard delivery gates.
+- Production operations include observability, error handling, idempotency, and policy controls.
+- Public technical artifacts clearly demonstrate end-to-end engineering decisions and outcomes.
+- The profile is credible for AI-native hiring loops and technical collaboration.
 
 ---
 
-## Current Status (Baseline)
+## Operating Principles
 
-### Technical Background
+1. Threat model first.  
+Define allowed resources, blast radius, and unacceptable outcomes before implementation.
 
-* Senior Software Engineer
-* Strong JavaScript (frontend + backend)
-* Experience across:
+2. Deny by default.  
+Capabilities, filesystem, network, and credentials are restricted until explicitly allowed.
 
-  * Architecture
-  * Quality
-  * DevOps
-  * CI/CD
-  * UX
-  * Accessibility (A11y)
-* Python: working knowledge, not primary language
-* AI experience: usage and integration, not model ownership
+3. Everything is replayable.  
+Each run must produce traceable artifacts and reproducible context.
 
-### Strengths
+4. Evaluation before claims.  
+If behavior cannot be measured and compared, it is not complete.
 
-* Systems thinking
-* Production mindset
-* Cross-layer understanding
-* Engineering rigor
-
-### Gaps (Explicit)
-
-* No production agent systems shipped
-* No visible evaluation or observability work for AI
-* Python not yet primary
-* No public AI tooling artifacts
-* Profile reads as "AI-adjacent", not "AI-first"
-
-These gaps are acknowledged and intentional starting constraints.
+5. Small compounding steps.  
+Every work session should produce one concrete artifact and one clear next step.
 
 ---
 
-## Core Product Principles
+## Platform Progression Map
 
-1. **Agents are systems, not chats**
-   An agent must have: loop, tools, memory, termination, and evaluation.
-
-2. **Evaluation is the product**
-   If it cannot be measured or replayed, it is not done.
-
-3. **Few primitives, high leverage**
-   Prefer a small set of general skills over a long list of narrow tools.
-
-4. **Context discipline**
-   Treat context as scarce; offload to files/storage; summarize only when necessary.
-
-5. **Non-technical UX**
-   Composability and clarity are requirements, not nice-to-haves.
-
-6. **Framework-agnostic**
-   Understand loops/tooling/evals; choose the best tool per scenario. Be fluent with AI coding tools in real work.
+| Stage | Platform | Role in the roadmap |
+|---|---|---|
+| Start | Nanobot | Fastest path to hands-on agent operations and iteration discipline. |
+| Expand | OpenClaw | Broader deployable agent platform patterns and reusable architecture. |
+| Harden | AgentZero | High-capability OS-agent hardening, policy enforcement, and blast-radius control. |
+| Productivity | OpenCode | Async/background coding operations and artifact-driven automation workflows. |
 
 ---
 
-## Primary Focus: AI Agents
+## 2026–2027 Trend Alignment
 
-### Why Agents
+1. Tool protocol interoperability (MCP/connectors).  
+Design tools and integration boundaries so agents can consume external capabilities through standard protocols.
 
-AI Agents sit at the intersection of:
+2. Structured outputs and typed tool contracts.  
+Use schema-first I/O for predictable automation and easier regression testing.
 
-* Models
-* Systems
-* Evaluation
-* Infrastructure
-* Product behavior
+3. Background and async execution.  
+Treat long-running operations as first-class, auditable jobs with resumable artifacts.
 
-They force rigor in:
+4. Context and state quality.  
+Invest in memory relevance, compaction, and prompt-context hygiene to reduce drift and cost.
 
-* Decision-making
-* Memory
-* Tool use
-* Failure handling
-* Evaluation under uncertainty
-
-Agents are not demos. They are **systems**.
-
-### Scope of "Agents" in this Journey
-
-* Single-agent systems with measurable objectives
-* Tool-using agents (APIs, code execution, retrieval)
-* Memory architectures
-* Agent evaluation frameworks
-* Reliability, observability, and debugging of agent behavior
-* Workflow automation (triggers, state, human approvals, audit logs)
+5. Cost and performance governance.  
+Use model routing, budget controls, fallback strategies, and caching to balance quality and spend.
 
 ---
 
-## Competency Checklist
+## Iterative Operating Mode
 
-### Agent Runtime
+Work happens in available free slots, not fixed schedules.
 
-* Loop with explicit termination
-* Tool registry + schemas + error surfaces
-* Retries/backoff + rate-limit handling
-* Deterministic run artifacts (run_id, config snapshot, trace logs)
+Session rule:
 
-### Skills Design
+- Select the smallest unblocked task with high learning leverage.
+- Produce one concrete artifact (code, test, run report, doc update, or postmortem).
+- Record decision, result, and the next smallest step.
 
-* Clean, stable abstractions
-* Composability (skills chain without leaking complexity)
-* Non-technical docs/examples
-* Input/output schemas
-* Idempotency strategies
-* Logging/tracing hooks
+Progress metric:
 
-### Workflow Automation
-
-* Triggers, state, human approvals, audit logs
-* Integration adapters (real + mock for CRM, drive, chat)
-
-### AI Dev Environment Ownership
-
-* Templates + "golden paths"
-* Rules/patterns for AI coding assistants
-* Docs that let others ship fast
+- Consistent micro-delivery and documented learning over time.
 
 ---
 
-## The Two Spine Repos (Phase 1–2)
+## Public Artifact Standards
 
-### 1) `agent-evalkit` (core engineering proof)
-
-A minimal harness to:
-
-* Define tasks (JSONL) for agent workflows (research, enrichment, drafting, routing)
-* Run agents, capture **step traces**, tool calls, failures
-* Score outcomes and compare runs (regressions)
-
-### 2) `skills-kit` (composable primitives)
-
-A modular "Skills" library:
-
-* Each skill is a composable primitive with:
-  * Input schema
-  * Output schema
-  * Idempotency strategy
-  * Logging/tracing hooks
-  * Documentation for non-technical users
-* Provide adapters:
-  * Real integrations where possible
-  * **Mock adapters** (CRM, drive, chat) so the repo is runnable
+- A reviewer can understand objective, approach, and evidence quickly.
+- Each artifact includes what changed, why it changed, and how it was validated.
+- Claims are supported by traces, logs, metrics, tests, or reproducible runs.
 
 ---
 
-## Public Narrative & Personal Platform
+## Relationship with `plan.md`
 
-### Personal Domain
-
-Primary public hub:
-
-* **[https://marcosgilf.com](https://marcosgilf.com)**
-
-Purpose:
-
-* Track the AI Engineer journey publicly
-* Publish technical write-ups and experiments
-* Host long-form thinking that does not fit social media
-* Act as the canonical source of truth
-
-GitHub remains the execution layer. The website is the narrative layer.
-
-### LinkedIn Relationship (Single Source of Truth)
-
-LinkedIn is treated as a **distribution channel**, not the source of truth.
-
-Rules:
-
-* Canonical content lives on marcosgilf.com
-* LinkedIn posts reference or summarize canonical content
-* No divergence between profiles
-
-References:
-
-* [https://es.linkedin.com/in/marcosgilfernandez/en](https://es.linkedin.com/in/marcosgilfernandez/en)
-* [https://www.getmanfred.com/blog/writing-in-linkedin](https://www.getmanfred.com/blog/writing-in-linkedin)
-* [https://www.getmanfred.com/en/blog/de-scrappers-imposibles-a-apis-funcionales-la-aventura-de-manfred-con-linkedin](https://www.getmanfred.com/en/blog/de-scrappers-imposibles-a-apis-funcionales-la-aventura-de-manfred-con-linkedin)
+Detailed execution tracking lives in `plan.md`, using capability-based workstreams and explicit status markers.
 
 ---
 
-## Observability & Impact Tracking (Dogfooding)
+## Change Log
 
-The personal platform is also an **engineering playground**.
+### v1 (2026-01-23)
 
-### Objectives
+- Established initial AI Engineer transition direction.
+- Introduced phase-based execution structure and cadence guidance.
 
-* Measure reach and engagement
-* Practice production-grade observability
-* Apply infra thinking to personal work
+### v2 (2026-02-18)
 
-### Stack (Open Source)
-
-* **OpenTelemetry** — tracing and metrics
-* **Prometheus** — metrics collection
-* **Grafana** — dashboards and visualization
-
-### Metrics of Interest
-
-* Page visits and navigation paths
-* Time on content
-* Interaction depth (scroll, clicks)
-* Content performance over time
-* Correlation between published artifacts and inbound signals
-
-No third-party black-box analytics unless strictly necessary.
-
----
-
-## Execution Plan
-
-See [plan.md](plan.md) for the detailed execution roadmap with tracked steps.
-
-### Phase Summary
-
-| Phase | Focus | Timeline |
-|-------|-------|----------|
-| Phase 0 | Setup & infrastructure | Days 1–3 |
-| Phase 1 | Agentic engineering fundamentals (`agent-evalkit`) | Weeks 1–6 |
-| Phase 2 | Skills library + workflow automation (`skills-kit`) | Weeks 7–12 |
-| Phase 3 | AI dev environment ownership | Weeks 13–16 |
-| Phase 4 | Positioning & narrative | Weeks 17–20 |
-| Future | Core ML (deferred) | Post Week 20 |
-
-### Daily Operating Cadence (1 hour/day)
-
-* **40 min build**: one small slice (feature + test)
-* **10 min evaluate**: run suite, log deltas
-* **10 min document**: DEVLOG entry + one lesson learned
-
-### Key Deliverables
-
-* `agent-evalkit` — eval harness with step traces, tool calls, and regression tests
-* `skills-kit` — composable primitives with schemas, docs, and mock adapters
-* Golden template repo for team enablement
-* 2 canonical technical posts on marcosgilf.com
-
-### Future Phase — Core ML
-
-Deferred to build a strong foundation in production agent systems first:
-
-* Model training, fine-tuning, and evaluation
-* Research-adjacent engineering contributions
-* Multimodal systems
-
----
-
-## Output Standards (Public Artifacts)
-
-* A stranger can clone and run in <15 minutes
-* README includes: objective, how to run, metrics, failure analysis, roadmap
-* Code demonstrates production patterns (logging, retries, idempotency)
-
----
-
-## Constraints & Trade-offs
-
-* This path sacrifices short-term comfort for long-term leverage
-* JavaScript remains useful but is no longer the center
-* Speed is less important than correctness and depth
-* Many attempts will fail; failures are expected artifacts
-* Core ML work is explicitly deferred, not abandoned
-
----
-
-## Operating Rules
-
-* If a system cannot be evaluated, it is incomplete
-* If results cannot be reproduced, they do not count
-* If something feels "too easy", it is probably too shallow
-* No resume-driven development
-
----
-
-## Review Cadence
-
-* Monthly: reassess focus and learning gaps
-* Quarterly: evaluate whether artifacts match target roles
-* Annually: decide whether to narrow or pivot focus
-
----
-
-## Final Note
-
-This document is a **living system definition**.
-It will evolve as skills, constraints, and opportunities change.
-
-The goal is not to "learn AI".
-The goal is to **become an Applied AI Engineer others rely on**.
+- Preserved AI Engineer framing as the primary identity.
+- Clarified AI Agents as the starting specialization path.
+- Added explicit 2026–2027 scope and trend alignment.
+- Added iterative operating mode based on available free slots.
+- Added platform progression map from Nanobot to broader platforms.
+- Merged security and rigor principles from `instructions-v2.md`.
+- Added document version control and inline change history.
