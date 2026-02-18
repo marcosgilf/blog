@@ -1,188 +1,184 @@
-# Plan — Applied AI Engineer Execution Roadmap
+# Plan — AI Engineer Execution Roadmap
 
-Optimized for **1 hour/day** and aligned to Applied AI responsibilities: agents + skills + workflow automation + AI dev environment.
+## Document Control
 
-See [ai-engineer.md](ai-engineer.md) for context, goals, and principles.
-
----
-
-## Phase 0 — Setup (Days 1–3)
-
-**Goal:** Remove friction and establish infrastructure.
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 0.1 | Create repos: `agent-evalkit`, `skills-kit`, `marcosgilf.com` | `false` |
-| 0.2 | Standard tooling: `uv` (or poetry), ruff, pytest, pre-commit, GitHub Actions | `false` |
-| 0.3 | Start `DEVLOG.md` (daily log) | `false` |
-
-**Exit criteria:** CI green; "hello run" produces `runs/<run_id>/`.
+| Version | Date | Source | Notes |
+|---|---|---|---|
+| v1 | 2026-01-23 | Commit `c22992c` (`docs: ai engineer plan`) | Initial phase-based roadmap with fixed cadence constraints. |
+| v2 | 2026-02-18 | `instructions-v2.md`, `plan-v2.md`, nanobot specs (`iac.md`, `llm-router.md`, `memory-manager.md`, `wodbuster-booker.md`) | Converts roadmap to iterative execution, keeps AI Engineer identity, and makes Nanobot an active starter track within a broader multi-platform plan. |
 
 ---
 
-## Phase 1 — Agentic Engineering Fundamentals (Weeks 1–6)
+## Plan Status Vocabulary
 
-**Goal:** Build and evaluate a tool-using agent loop (not a demo).
+Use only these statuses:
 
-### Week 1: Skeleton + Run Artifacts
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 1.1 | CLI: `run --config ...` | `false` |
-| 1.2 | Create `runs/<run_id>/` with config snapshot + placeholder report | `false` |
-| 1.3 | Smoke tests + CI | `false` |
-
-### Week 2: Task Schema + Scoring v0
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 2.1 | JSONL tasks: prompt + expected + tags + allowed_tools | `false` |
-| 2.2 | JSONL results: output + score + error + latency + trace_path | `false` |
-| 2.3 | Metrics report: overall + per-tag | `false` |
-
-### Week 3: Tooling + Agent Loop v0
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 3.1 | Tool registry + schemas | `false` |
-| 3.2 | Tools: calculator + local file search + write file | `false` |
-| 3.3 | Termination: max steps + explicit done | `false` |
-
-### Week 4: Observability + Replay
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 4.1 | Structured logs per step/tool call | `false` |
-| 4.2 | Save full trace per task | `false` |
-| 4.3 | Replay from stored artifacts | `false` |
-
-### Week 5: Failure Taxonomy + Fixes
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 5.1 | Categorize failures (tool choice, args, loop, hallucination) | `false` |
-| 5.2 | Implement 2 fixes | `false` |
-| 5.3 | Before/after metrics | `false` |
-
-### Week 6: Regression Testing
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 6.1 | Run comparison command | `false` |
-| 6.2 | Alert on score deltas; list broken tasks | `false` |
-
-**Exit criteria:** `agent-evalkit` is inspectable and measurable.
+- `Done` — objective completed with evidence.
+- `In Progress` — currently active and unblocked.
+- `Blocked` — cannot advance without resolving an external dependency.
+- `Queued` — intentionally deferred, ready for activation.
 
 ---
 
-## Phase 2 — Skills Library + Workflow Automation (Weeks 7–12)
+## Execution Model (Iterative)
 
-**Goal:** Build modular, composable skills and autonomous workflows.
+This plan is executed in free time slots, not fixed schedules.
 
-### Weeks 7–8: `skills-kit` v0
+Session operating rule:
 
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 7.1 | Write a "Skill spec" (schema, idempotency, logs, examples) | `false` |
-| 7.2 | Implement 6–10 skills (primitives) with mock adapters | `false` |
+1. Pick the smallest unblocked next task.
+2. End the session with one concrete artifact.
+3. Log decision, result, and next smallest step.
 
-Example skills:
-- `find_company_info`, `enrich_contact`, `draft_email`
-- `summarize_thread`, `create_crm_record`, `update_pipeline_stage`
-
-### Weeks 9–10: Composition + Non-Technical UX
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 9.1 | Skill cookbook docs (copy/paste examples) | `false` |
-| 9.2 | Composer interface: YAML workflows OR CLI wizard | `false` |
-| 9.3 | Evals for composed workflows (multi-step) | `false` |
-
-### Weeks 11–12: Workflow Automation
-
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 11.1 | Build workflow 1: Lead research → enrichment → CRM update → notification | `false` |
-| 11.2 | Build workflow 2: Proposal draft → review gate → send/log | `false` |
-| 11.3 | Add audit logs + human approval steps | `false` |
-
-**Exit criteria:** Realistic automation demo that runs end-to-end and is measurable.
+Valid artifacts include code change, test case, run report, trace sample, design note, or postmortem entry.
 
 ---
 
-## Phase 3 — AI Dev Environment Ownership (Weeks 13–16)
+## Current Program Context
 
-**Goal:** Prove you can enable a team to ship fast.
+Primary identity:
 
-### Golden Template Repo
+- AI Engineer.
 
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 13.1 | Logging/tracing setup | `false` |
-| 13.2 | Eval harness wiring | `false` |
-| 13.3 | Tool scaffolding | `false` |
-| 13.4 | Safe defaults configuration | `false` |
+Current starting domain:
 
-### Documentation
+- AI Agents.
 
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 14.1 | AI coding tools rules and usage patterns (Cursor, Claude Code, etc.) | `false` |
-| 14.2 | Production readiness checklists (retries, idempotency, secrets, rate limits, monitoring) | `false` |
+Current active platform:
 
-**Exit criteria:** Templates + docs that a teammate could follow to build agent workflows.
+- Nanobot, selected because it has the lowest learning curve and immediate deployability.
+
+Roadmap boundary:
+
+- Nanobot is a starting track, not the full scope of the plan.
 
 ---
 
-## Phase 4 — Positioning (Weeks 17–20)
+## Nanobot Starter Track
 
-**Goal:** Convert artifacts into hiring-loop-ready narrative.
+**Status:** `In Progress`
 
-### Content
+**Objective:** Build practical agent engineering depth through real deployment, skill operations, and reliability improvements.
 
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 17.1 | Post: "Composable Skills for automation: design + tradeoffs" | `false` |
-| 17.2 | Post: "Evaluating tool-using agents: failure modes + regression tests" | `false` |
-| 17.3 | Portfolio page with demos, metrics, architecture diagrams | `false` |
+**Current evidence artifacts:**
 
-### Interview Preparation
+- IaC and deployment workflows documented and operational.
+- Active feature specs: `iac`, `llm-router`, `memory-manager`, `wodbuster-booker`.
+- Test and lint baseline currently passing in the nanobot project.
 
-| Step | Description | Completed |
-|------|-------------|-----------|
-| 18.1 | System design deep dive document | `false` |
-| 18.2 | Postmortem of one failure | `false` |
-| 18.3 | Scaling plan (cost, caching, reliability) | `false` |
+**Cross-over checkpoints to broader platforms:**
 
-**Exit criteria:** A reviewer sees direct fit to Applied AI roles in <10 minutes.
+1. When policy and sandbox interfaces are stable in Nanobot patterns, start OpenClaw integration baseline.
+2. When risky-action controls and audit style are stable, start AgentZero hardening exercises.
+3. When async operational flow is repeatable, start OpenCode background execution track.
 
 ---
 
-## Future Phase — Core ML (Post Week 20)
+## Workstream A: Agent Runtime & Tool Use
 
-Deferred objectives to tackle after establishing production agent expertise:
+- **Objective:** Build robust runtime behavior for tool-using agents with explicit contracts and termination boundaries.
+- **Current status:** `In Progress`
+- **Next 3 smallest tasks:**
+1. Define a normalized tool contract template (name, schema, guardrails, expected output).
+2. Add one trace example that captures a full tool decision cycle.
+3. Document one failure mode where tool selection was incorrect and the correction.
+- **Exit criteria:** Runtime behavior is inspectable, reproducible, and consistently schema-driven.
+- **Evidence artifacts:** Tool contract docs, trace samples, failure-analysis notes, regression examples.
 
-| Step | Description | Completed |
-|------|-------------|-----------|
-| F.1 | Model training fundamentals (PyTorch) | `false` |
-| F.2 | Fine-tuning workflows | `false` |
-| F.3 | Model evaluation frameworks | `false` |
-| F.4 | Multimodal systems exploration | `false` |
+## Workstream B: Evaluation & Regression
+
+- **Objective:** Make behavior measurable and comparable across changes.
+- **Current status:** `In Progress`
+- **Next 3 smallest tasks:**
+1. Define minimum eval task format for current agent behaviors.
+2. Add one scorer for structured output validity.
+3. Produce one before/after comparison artifact for a real fix.
+- **Exit criteria:** Every significant behavior change can be validated through repeatable evaluation outputs.
+- **Evidence artifacts:** Eval task files, scorer definitions, comparison reports, regression logs.
+
+## Workstream C: Secure Deployment & Policies
+
+- **Objective:** Apply threat-model-first and deny-by-default controls to agent operations.
+- **Current status:** `In Progress`
+- **Next 3 smallest tasks:**
+1. Write a lightweight threat model template for each automation flow.
+2. Define an allowlist policy draft for tool/network/filesystem access.
+3. Add one auditable denied-action example with rationale.
+- **Exit criteria:** Critical flows run under explicit policy boundaries with auditable decisions.
+- **Evidence artifacts:** Threat model docs, policy files, audit event samples, incident notes.
+
+## Workstream D: Async/Background Agent Operations
+
+- **Objective:** Enable long-running and deferred tasks with clear artifact outputs.
+- **Current status:** `In Progress`
+- **Next 3 smallest tasks:**
+1. Standardize background run output layout (logs, traces, result summary).
+2. Define one retry and resumption rule for interrupted jobs.
+3. Add one notification format for background completion/failure.
+- **Exit criteria:** Background tasks can run safely, be inspected afterward, and be resumed predictably.
+- **Evidence artifacts:** Run directories, retry logs, completion notifications, operator runbook snippets.
+
+## Workstream E: Narrative & Portfolio
+
+- **Objective:** Convert engineering work into clear public proof of AI engineering capability.
+- **Current status:** `In Progress`
+- **Next 3 smallest tasks:**
+1. Publish one architecture note that links goal, implementation, and evidence.
+2. Publish one postmortem with root cause and corrective action.
+3. Update portfolio index with latest artifact links and validation evidence.
+- **Exit criteria:** External reviewers can evaluate depth, rigor, and delivery quality quickly.
+- **Evidence artifacts:** Public write-ups, architecture diagrams, postmortems, portfolio updates.
 
 ---
 
-## Weekly Rhythm (1h/day)
+## Expansion Tracks
 
-| Day | Focus |
-|-----|-------|
-| Mon–Thu | Implement + tests |
-| Fri | Evaluation + cleanup + README updates |
-| Weekend (optional) | 1 deeper workflow session |
+| Platform | Status | Why it matters | First activation task |
+|---|---|---|---|
+| OpenClaw | `Queued` | Generalize deployable agent platform patterns beyond Nanobot. | Stand up a minimal runtime with one policy-controlled tool path. |
+| AgentZero | `Queued` | Practice hardening for high-capability OS-agent behavior. | Build strict policy profile and test denied destructive actions. |
+| OpenCode | `Queued` | Operationalize async coding workflows and artifact-first delivery. | Run one background task and store reproducible artifacts end-to-end. |
 
-## Daily Cadence
+---
 
-| Time | Activity |
-|------|----------|
-| 40 min | Build: one small slice (feature + test) |
-| 10 min | Evaluate: run suite, log deltas |
-| 10 min | Document: DEVLOG entry + one lesson learned |
+## How to Pick Next Task
+
+1. Start from active workstreams in this priority order: blocked fixes, reliability risks, evaluation gaps, then expansion tasks.
+2. If current task is blocked, switch immediately to the next smallest unblocked task in another workstream.
+3. Prefer tasks that improve both capability and evidence quality.
+4. Avoid tasks that cannot produce a concrete artifact in one work session.
+5. End by recording the next smallest step so restart cost stays low.
+
+---
+
+## Learning Signals
+
+Track progress by capability gains instead of elapsed time:
+
+- **System design quality:** clearer boundaries, fewer hidden assumptions.
+- **Reliability quality:** fewer flaky outcomes, better error handling and recovery.
+- **Security quality:** stronger least-privilege defaults and explicit risk handling.
+- **Evaluation rigor:** better testability, comparability, and regression confidence.
+- **Automation quality:** more repeatable workflows with better operational visibility.
+
+If a session does not improve at least one signal, adjust task selection criteria.
+
+---
+
+## Change Log
+
+### v1 (2026-01-23)
+
+- Defined initial roadmap as time-boxed phases.
+- Emphasized agent systems, skills, and public narrative deliverables.
+
+### v2 (2026-02-18)
+
+- Removed fixed schedule constraints and switched to iterative execution.
+- Preserved AI Engineer framing as the primary identity.
+- Set AI Agents as the starting specialization path.
+- Added capability-based workstreams with explicit status vocabulary.
+- Added Nanobot starter track as active, with cross-over checkpoints.
+- Added queued expansion tracks for OpenClaw, AgentZero, and OpenCode.
+- Added task selection rules and learning-signal feedback loop.
+- Added document version control and inline change history.

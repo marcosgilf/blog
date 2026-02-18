@@ -10,6 +10,6 @@ const { SITE_URL } = loadEnv(process.env.NODE_ENV ?? '', process.cwd(), '');
 export default defineConfig({
   output: 'server',
   adapter: netlify(),
-  site: SITE_URL,
+  site: SITE_URL || 'https://www.marcosgilf.com',
   integrations: [mdx(), sitemap()],
 });
