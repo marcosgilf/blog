@@ -19,7 +19,10 @@ pnpm-debug.log*
 
 # environment variables
 .env
+.env.local
 .env.production
+.env.*.local
+# .env.development and .env.example are committed (safe defaults / docs)
 
 # macOS-specific files
 .DS_Store

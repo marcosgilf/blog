@@ -42,6 +42,27 @@ heroImage: string   # Optional (path in /public)
 - Lint/format uses Biome (`biome.json`).
 - Tests run with Vitest.
 
+## Environment Variables
+Configuration is driven by `.env` files loaded by Astro/Vite.
+See `.env.example` for the full reference.
+
+| Variable | Used in | Purpose |
+|---|---|---|
+| `SITE_URL` | `astro.config.mjs` | Canonical site URL (e.g. `https://example.com`) |
+| `SITE_TITLE` | `src/consts.ts` | Site name shown in header, meta, RSS |
+| `SITE_DESCRIPTION` | `src/consts.ts` | Default meta description |
+| `INFLUX_URL` | `src/pages/api/track.ts` | InfluxDB write endpoint |
+| `INFLUX_TOKEN` | `src/pages/api/track.ts` | InfluxDB auth token |
+| `INFLUX_ORG` | `src/pages/api/track.ts` | InfluxDB organisation |
+| `INFLUX_BUCKET` | `src/pages/api/track.ts` | InfluxDB bucket |
+| `CONTEXT` | `src/pages/api/track.ts` | Netlify deploy context (`production`, `deploy-preview`, …) |
+
+**File loading order** (Astro/Vite):
+- `astro dev` → `.env.development` > `.env`
+- `astro build` → `.env.production` > `.env`
+- `.env.development` is committed with safe dev defaults.
+- `.env` and `.env.production` are gitignored (contain secrets).
+
 ## Deployment (GitHub Actions -> Netlify)
 - CI workflow: `.github/workflows/ci.yml` runs lint/tests, builds, uploads `dist`, and invokes the preview deploy.
 - Preview workflow: `.github/workflows/deploy-preview.yml` is a reusable workflow invoked by CI for PRs to `main`, deploying `dist`.
