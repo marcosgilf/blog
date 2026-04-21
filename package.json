@@ -34,11 +34,11 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/netlify": "^6.6.4",
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/netlify": "^7.0.7",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.17.2"
+    "astro": "^6.1.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.2",
