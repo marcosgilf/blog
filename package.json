@@ -34,21 +34,21 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/netlify": "^6.6.4",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.17.2"
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/netlify": "^7.0.12",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.2",
-    "@commitlint/cli": "^20.4.1",
-    "@commitlint/config-conventional": "^20.4.1",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@biomejs/biome": "^2.4.16",
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
+    "@vitest/coverage-v8": "^4.1.8",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "npm-check-updates": "^19.3.2",
-    "vitest": "^4.0.18"
+    "lint-staged": "^17.0.7",
+    "npm-check-updates": "^22.2.3",
+    "vitest": "^4.1.8"
   },
   "keywords": [
     "astro",
