@@ -131,6 +131,10 @@ p {
   color: var(--color-text);
 }
 
+footer p {
+  margin: 0.35rem 0;
+}
+
 strong,
 b {
   font-weight: 700;
@@ -327,50 +331,33 @@ button#theme-toggle[aria-pressed="true"] svg path:nth-of-type(2) {
 }
 
 /* ========================================
-   Footer & Social
+   Article Layout
    ======================================== */
-footer {
-  padding: 2.5rem 1.5rem 3.5rem;
-  background-color: var(--color-surface);
-  color: var(--color-text-muted);
-  text-align: center;
-  border-top: 1px solid var(--color-border);
-}
-
-footer p {
-  margin: 0.35rem 0;
-}
-
-nav[aria-label="Social media links"] {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.2rem;
-}
-
-nav[aria-label="Social media links"] a {
-  text-decoration: none;
-  color: var(--color-text-muted);
-  padding: 0.4rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-}
-
-nav[aria-label="Social media links"] a:hover {
-  color: var(--color-accent);
-  border-color: var(--color-border);
-}
-
-nav[aria-label="Social media links"] span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+article {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+}
+
+article header {
+  text-align: left;
+  padding: 0 0 1.5rem;
+}
+
+article header time {
+  display: inline-block;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+article header p {
+  margin: 0.5rem 0 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+article section p {
+  margin-bottom: 1.6rem;
 }
 
 /* ========================================
@@ -385,7 +372,7 @@ main > nav ul {
   margin: 1rem 0 2rem;
 }
 
-main > nav a {
+main > nav li a {
   display: inline-flex;
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
@@ -395,7 +382,7 @@ main > nav a {
   background-color: var(--color-surface);
 }
 
-main > nav a:hover {
+main > nav li a:hover {
   color: var(--color-accent);
   border-color: color-mix(in srgb, var(--color-border) 70%, transparent);
 }
@@ -463,33 +450,46 @@ main > section > ul > li a p {
 }
 
 /* ========================================
-   Article Layout
+   Footer & Social
    ======================================== */
-article {
-  width: min(100% - 2rem, 760px);
-  margin: 0 auto;
+footer {
+  padding: 2.5rem 1.5rem 3.5rem;
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+
+nav[aria-label="Social media links"] {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+nav[aria-label="Social media links"] a {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  padding: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+nav[aria-label="Social media links"] a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-border);
+}
+
+nav[aria-label="Social media links"] span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   padding: 0;
-}
-
-article header {
-  text-align: left;
-  padding: 0 0 1.5rem;
-}
-
-article header time {
-  display: inline-block;
-  color: var(--color-text-muted);
-  margin-bottom: 0.4rem;
-}
-
-article header p {
-  margin: 0.5rem 0 0;
-  font-style: italic;
-  color: var(--color-text-muted);
-}
-
-article section p {
-  margin-bottom: 1.6rem;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ========================================
