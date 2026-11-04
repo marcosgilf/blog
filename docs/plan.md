@@ -2,10 +2,10 @@
 
 ## Document Control
 
-| Version | Date | Source | Notes |
-|---|---|---|---|
-| v1 | 2026-01-23 | Commit `c22992c` (`docs: ai engineer plan`) | Initial phase-based roadmap with fixed cadence constraints. |
-| v2 | 2026-02-18 | `instructions-v2.md`, `plan-v2.md`, nanobot specs (`iac.md`, `llm-router.md`, `memory-manager.md`, `wodbuster-booker.md`) | Converts roadmap to iterative execution, keeps AI Engineer identity, and makes Nanobot an active starter track within a broader multi-platform plan. |
+| Version | Date       | Source                                                                                                                    | Notes                                                                                                                                                |
+| ------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| v1      | 2026-01-23 | Commit `c22992c` (`docs: ai engineer plan`)                                                                               | Initial phase-based roadmap with fixed cadence constraints.                                                                                          |
+| v2      | 2026-02-18 | `instructions-v2.md`, `plan-v2.md`, nanobot specs (`iac.md`, `llm-router.md`, `memory-manager.md`, `wodbuster-booker.md`) | Converts roadmap to iterative execution, keeps AI Engineer identity, and makes Nanobot an active starter track within a broader multi-platform plan. |
 
 ---
 
@@ -79,9 +79,11 @@ Roadmap boundary:
 - **Objective:** Build robust runtime behavior for tool-using agents with explicit contracts and termination boundaries.
 - **Current status:** `In Progress`
 - **Next 3 smallest tasks:**
+
 1. Define a normalized tool contract template (name, schema, guardrails, expected output).
 2. Add one trace example that captures a full tool decision cycle.
 3. Document one failure mode where tool selection was incorrect and the correction.
+
 - **Exit criteria:** Runtime behavior is inspectable, reproducible, and consistently schema-driven.
 - **Evidence artifacts:** Tool contract docs, trace samples, failure-analysis notes, regression examples.
 
@@ -90,9 +92,11 @@ Roadmap boundary:
 - **Objective:** Make behavior measurable and comparable across changes.
 - **Current status:** `In Progress`
 - **Next 3 smallest tasks:**
+
 1. Define minimum eval task format for current agent behaviors.
 2. Add one scorer for structured output validity.
 3. Produce one before/after comparison artifact for a real fix.
+
 - **Exit criteria:** Every significant behavior change can be validated through repeatable evaluation outputs.
 - **Evidence artifacts:** Eval task files, scorer definitions, comparison reports, regression logs.
 
@@ -101,9 +105,11 @@ Roadmap boundary:
 - **Objective:** Apply threat-model-first and deny-by-default controls to agent operations.
 - **Current status:** `In Progress`
 - **Next 3 smallest tasks:**
+
 1. Write a lightweight threat model template for each automation flow.
 2. Define an allowlist policy draft for tool/network/filesystem access.
 3. Add one auditable denied-action example with rationale.
+
 - **Exit criteria:** Critical flows run under explicit policy boundaries with auditable decisions.
 - **Evidence artifacts:** Threat model docs, policy files, audit event samples, incident notes.
 
@@ -112,9 +118,11 @@ Roadmap boundary:
 - **Objective:** Enable long-running and deferred tasks with clear artifact outputs.
 - **Current status:** `In Progress`
 - **Next 3 smallest tasks:**
+
 1. Standardize background run output layout (logs, traces, result summary).
 2. Define one retry and resumption rule for interrupted jobs.
 3. Add one notification format for background completion/failure.
+
 - **Exit criteria:** Background tasks can run safely, be inspected afterward, and be resumed predictably.
 - **Evidence artifacts:** Run directories, retry logs, completion notifications, operator runbook snippets.
 
@@ -123,9 +131,11 @@ Roadmap boundary:
 - **Objective:** Convert engineering work into clear public proof of AI engineering capability.
 - **Current status:** `In Progress`
 - **Next 3 smallest tasks:**
+
 1. Publish one architecture note that links goal, implementation, and evidence.
 2. Publish one postmortem with root cause and corrective action.
 3. Update portfolio index with latest artifact links and validation evidence.
+
 - **Exit criteria:** External reviewers can evaluate depth, rigor, and delivery quality quickly.
 - **Evidence artifacts:** Public write-ups, architecture diagrams, postmortems, portfolio updates.
 
@@ -133,11 +143,11 @@ Roadmap boundary:
 
 ## Expansion Tracks
 
-| Platform | Status | Why it matters | First activation task |
-|---|---|---|---|
-| OpenClaw | `Queued` | Generalize deployable agent platform patterns beyond Nanobot. | Stand up a minimal runtime with one policy-controlled tool path. |
-| AgentZero | `Queued` | Practice hardening for high-capability OS-agent behavior. | Build strict policy profile and test denied destructive actions. |
-| OpenCode | `Queued` | Operationalize async coding workflows and artifact-first delivery. | Run one background task and store reproducible artifacts end-to-end. |
+| Platform  | Status   | Why it matters                                                     | First activation task                                                |
+| --------- | -------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| OpenClaw  | `Queued` | Generalize deployable agent platform patterns beyond Nanobot.      | Stand up a minimal runtime with one policy-controlled tool path.     |
+| AgentZero | `Queued` | Practice hardening for high-capability OS-agent behavior.          | Build strict policy profile and test denied destructive actions.     |
+| OpenCode  | `Queued` | Operationalize async coding workflows and artifact-first delivery. | Run one background task and store reproducible artifacts end-to-end. |
 
 ---
 

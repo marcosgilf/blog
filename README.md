@@ -8,7 +8,7 @@ Welcome to my personal blog! This is where I share my thoughts, experiences, and
 
 ### Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/) (v22 or later) and npm installed on your machine.
+Make sure you have [Node.js](https://nodejs.org/) (v26 or later) and npm installed on your machine.
 
 ### Installation
 
@@ -107,7 +107,6 @@ Learn more about [Astro's Content Collections](https://docs.astro.build/en/guide
 We'd love your help! Please read our [Contributing Guide](./CONTRIBUTING.md) to learn about our development process and how to submit pull requests.
 
 By participating in this project, you agree to abide by our [Code of Conduct](./CODE_OF_CONDUCT.md).
-
 
 ## License
 

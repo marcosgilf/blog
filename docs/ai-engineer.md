@@ -2,10 +2,10 @@
 
 ## Document Control
 
-| Version | Date | Source | Notes |
-|---|---|---|---|
-| v1 | 2026-01-23 | Commit `c22992c` (`docs: ai engineer plan`) | Initial AI Engineer direction with phase-based schedule constraints. |
-| v2 | 2026-02-18 | `instructions-v2.md`, `plan-v2.md`, nanobot specs (`iac.md`, `llm-router.md`, `memory-manager.md`, `wodbuster-booker.md`) | Preserves AI Engineer framing, removes fixed cadence, defines iterative execution, and aligns the roadmap with 2026–2027 AI trends. |
+| Version | Date       | Source                                                                                                                    | Notes                                                                                                                               |
+| ------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| v1      | 2026-01-23 | Commit `c22992c` (`docs: ai engineer plan`)                                                                               | Initial AI Engineer direction with phase-based schedule constraints.                                                                |
+| v2      | 2026-02-18 | `instructions-v2.md`, `plan-v2.md`, nanobot specs (`iac.md`, `llm-router.md`, `memory-manager.md`, `wodbuster-booker.md`) | Preserves AI Engineer framing, removes fixed cadence, defines iterative execution, and aligns the roadmap with 2026–2027 AI trends. |
 
 ---
 
@@ -87,49 +87,49 @@ This journey is successful when at least three outcomes are true:
 ## Operating Principles
 
 1. Threat model first.  
-Define allowed resources, blast radius, and unacceptable outcomes before implementation.
+   Define allowed resources, blast radius, and unacceptable outcomes before implementation.
 
 2. Deny by default.  
-Capabilities, filesystem, network, and credentials are restricted until explicitly allowed.
+   Capabilities, filesystem, network, and credentials are restricted until explicitly allowed.
 
 3. Everything is replayable.  
-Each run must produce traceable artifacts and reproducible context.
+   Each run must produce traceable artifacts and reproducible context.
 
 4. Evaluation before claims.  
-If behavior cannot be measured and compared, it is not complete.
+   If behavior cannot be measured and compared, it is not complete.
 
 5. Small compounding steps.  
-Every work session should produce one concrete artifact and one clear next step.
+   Every work session should produce one concrete artifact and one clear next step.
 
 ---
 
 ## Platform Progression Map
 
-| Stage | Platform | Role in the roadmap |
-|---|---|---|
-| Start | Nanobot | Fastest path to hands-on agent operations and iteration discipline. |
-| Expand | OpenClaw | Broader deployable agent platform patterns and reusable architecture. |
-| Harden | AgentZero | High-capability OS-agent hardening, policy enforcement, and blast-radius control. |
-| Productivity | OpenCode | Async/background coding operations and artifact-driven automation workflows. |
+| Stage        | Platform  | Role in the roadmap                                                               |
+| ------------ | --------- | --------------------------------------------------------------------------------- |
+| Start        | Nanobot   | Fastest path to hands-on agent operations and iteration discipline.               |
+| Expand       | OpenClaw  | Broader deployable agent platform patterns and reusable architecture.             |
+| Harden       | AgentZero | High-capability OS-agent hardening, policy enforcement, and blast-radius control. |
+| Productivity | OpenCode  | Async/background coding operations and artifact-driven automation workflows.      |
 
 ---
 
 ## 2026–2027 Trend Alignment
 
 1. Tool protocol interoperability (MCP/connectors).  
-Design tools and integration boundaries so agents can consume external capabilities through standard protocols.
+   Design tools and integration boundaries so agents can consume external capabilities through standard protocols.
 
 2. Structured outputs and typed tool contracts.  
-Use schema-first I/O for predictable automation and easier regression testing.
+   Use schema-first I/O for predictable automation and easier regression testing.
 
 3. Background and async execution.  
-Treat long-running operations as first-class, auditable jobs with resumable artifacts.
+   Treat long-running operations as first-class, auditable jobs with resumable artifacts.
 
 4. Context and state quality.  
-Invest in memory relevance, compaction, and prompt-context hygiene to reduce drift and cost.
+   Invest in memory relevance, compaction, and prompt-context hygiene to reduce drift and cost.
 
 5. Cost and performance governance.  
-Use model routing, budget controls, fallback strategies, and caching to balance quality and spend.
+   Use model routing, budget controls, fallback strategies, and caching to balance quality and spend.
 
 ---
 

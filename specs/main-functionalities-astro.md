@@ -7,21 +7,21 @@ All personal content, copy, images and domain-specific values are intentionally 
 
 ## 1. Technology Stack
 
-| Layer | Tool | Version hint |
-|---|---|---|
-| Framework | Astro | 5.x |
-| Language | TypeScript (ESM, `"type": "module"`) | — |
-| Content | MDX + Astro Content Collections | — |
-| Adapter | `@astrojs/netlify` (SSR `output: 'server'`) | — |
-| Integrations | `@astrojs/mdx`, `@astrojs/sitemap`, `@astrojs/rss` | — |
-| Linter / Formatter | Biome | 2.x |
-| Testing | Vitest + `@vitest/coverage-v8` | — |
-| Git hooks | Husky + lint-staged + commitlint | — |
-| Dep checker | npm-check-updates (`ncu`) | — |
-| IaC | Terraform (Netlify provider, Grafana provider) | ≥ 1.6 |
-| CI/CD | GitHub Actions → Netlify | — |
-| Node | LTS (see `.nvmrc`, currently `v22`) | — |
-| Package manager | npm | — |
+| Layer              | Tool                                               | Version hint |
+| ------------------ | -------------------------------------------------- | ------------ |
+| Framework          | Astro                                              | 5.x          |
+| Language           | TypeScript (ESM, `"type": "module"`)               | —            |
+| Content            | MDX + Astro Content Collections                    | —            |
+| Adapter            | `@astrojs/netlify` (SSR `output: 'server'`)        | —            |
+| Integrations       | `@astrojs/mdx`, `@astrojs/sitemap`, `@astrojs/rss` | —            |
+| Linter / Formatter | Biome                                              | 2.x          |
+| Testing            | Vitest + `@vitest/coverage-v8`                     | —            |
+| Git hooks          | Husky + lint-staged + commitlint                   | —            |
+| Dep checker        | npm-check-updates (`ncu`)                          | —            |
+| IaC                | Terraform (Netlify provider, Grafana provider)     | ≥ 1.6        |
+| CI/CD              | GitHub Actions → Netlify                           | —            |
+| Node               | 26 (see `.nvmrc`)                                  | —            |
+| Package manager    | npm                                                | —            |
 
 ---
 
@@ -139,7 +139,9 @@ export default defineConfig({
   "overrides": [
     {
       "includes": ["**/*.astro"],
-      "linter": { "rules": { "correctness": { "noUnusedVariables": "off", "noUnusedImports": "off" } } }
+      "linter": {
+        "rules": { "correctness": { "noUnusedVariables": "off", "noUnusedImports": "off" } }
+      }
     },
     {
       "includes": ["**/*.css"],
@@ -185,7 +187,7 @@ npm run dependencies:check || (echo "❌ To upgrade package.json easier 🆙 npm
 ### 3.8 `.nvmrc`
 
 ```
-v22
+v26
 ```
 
 ### 3.9 `.gitignore`
@@ -247,26 +249,26 @@ INFLUX_BUCKET=
 
 ### Production
 
-| Package | Purpose |
-|---|---|
-| `astro` | Core framework |
-| `@astrojs/mdx` | MDX integration |
+| Package            | Purpose             |
+| ------------------ | ------------------- |
+| `astro`            | Core framework      |
+| `@astrojs/mdx`     | MDX integration     |
 | `@astrojs/netlify` | Netlify SSR adapter |
-| `@astrojs/rss` | RSS feed generation |
-| `@astrojs/sitemap` | Sitemap generation |
+| `@astrojs/rss`     | RSS feed generation |
+| `@astrojs/sitemap` | Sitemap generation  |
 
 ### Dev
 
-| Package | Purpose |
-|---|---|
-| `@biomejs/biome` | Linter + formatter |
-| `@commitlint/cli` | Commit linting |
+| Package                           | Purpose                     |
+| --------------------------------- | --------------------------- |
+| `@biomejs/biome`                  | Linter + formatter          |
+| `@commitlint/cli`                 | Commit linting              |
 | `@commitlint/config-conventional` | Conventional commits preset |
-| `@vitest/coverage-v8` | Coverage reporting |
-| `husky` | Git hooks |
-| `lint-staged` | Run linters on staged files |
-| `npm-check-updates` | Dependency update checker |
-| `vitest` | Unit test runner |
+| `@vitest/coverage-v8`             | Coverage reporting          |
+| `husky`                           | Git hooks                   |
+| `lint-staged`                     | Run linters on staged files |
+| `npm-check-updates`               | Dependency update checker   |
+| `vitest`                          | Unit test runner            |
 
 ---
 
@@ -320,14 +322,14 @@ Blog posts go in `src/content/blog/` as `.md` or `.mdx` files with matching fron
 
 ## 7. Pages & Routing
 
-| Route | File | Rendering |
-|---|---|---|
-| `/` | `src/pages/index.astro` | Static |
-| `/about` | `src/pages/about.astro` | Static |
-| `/blog` | `src/pages/blog/index.astro` | Static |
-| `/blog/[slug]` | `src/pages/blog/[...slug].astro` | Static |
-| `/rss.xml` | `src/pages/rss.xml.js` | Static |
-| `/api/track` | `src/pages/api/track.ts` | SSR (`prerender: false`) |
+| Route          | File                             | Rendering                |
+| -------------- | -------------------------------- | ------------------------ |
+| `/`            | `src/pages/index.astro`          | Static                   |
+| `/about`       | `src/pages/about.astro`          | Static                   |
+| `/blog`        | `src/pages/blog/index.astro`     | Static                   |
+| `/blog/[slug]` | `src/pages/blog/[...slug].astro` | Static                   |
+| `/rss.xml`     | `src/pages/rss.xml.js`           | Static                   |
+| `/api/track`   | `src/pages/api/track.ts`         | SSR (`prerender: false`) |
 
 The analytics endpoint (`/api/track`) receives POST requests and writes data to InfluxDB via the line protocol. It reads env vars: `INFLUX_URL`, `INFLUX_TOKEN`, `INFLUX_ORG`, `INFLUX_BUCKET`, `CONTEXT`, `NODE_ENV`.
 
@@ -338,6 +340,7 @@ The analytics endpoint (`/api/track`) receives POST requests and writes data to 
 ### Components (`src/components/`)
 
 Each component has a co-located `*.test.js` file:
+
 - `BaseHead.astro` – HTML head, meta/SEO tags
 - `Header.astro` – Site nav header
 - `Footer.astro` – Site footer
@@ -347,14 +350,17 @@ Each component has a co-located `*.test.js` file:
 - `ThemeToggle.astro` – Dark/light theme toggle
 
 ### Layouts (`src/layouts/`)
+
 - `BlogPost.astro` – Blog post page wrapper
 
 ### Utilities (`src/utils/`)
+
 - `sort.ts` – Sort posts by `pubDate` descending
 - `title.ts` – Generate page titles (`SITE_TITLE - segment1 - segment2`)
 - `track.ts` – Helpers for analytics: `escapeTagValue`, `normalizeReferrer`, `getCountryFromHeaders`, `parseUserAgent`
 
 ### Constants (`src/consts.ts`)
+
 - `SITE_TITLE` and `SITE_DESCRIPTION` exported for use across pages/components.
 - Values are read from `import.meta.env` with hardcoded fallbacks:
 
@@ -370,24 +376,26 @@ export const SITE_DESCRIPTION =
 
 Configuration is driven by `.env` files loaded automatically by Astro/Vite.
 
-| Variable | Used in | Purpose |
-|---|---|---|
-| `SITE_URL` | `astro.config.mjs` | Canonical site URL (e.g. `https://example.com`) |
-| `SITE_TITLE` | `src/consts.ts` | Site name shown in header, meta, RSS |
-| `SITE_DESCRIPTION` | `src/consts.ts` | Default meta description |
-| `INFLUX_URL` | `src/pages/api/track.ts` | InfluxDB write endpoint |
-| `INFLUX_TOKEN` | `src/pages/api/track.ts` | InfluxDB auth token |
-| `INFLUX_ORG` | `src/pages/api/track.ts` | InfluxDB organisation |
-| `INFLUX_BUCKET` | `src/pages/api/track.ts` | InfluxDB bucket |
-| `CONTEXT` | `src/pages/api/track.ts` | Netlify deploy context (`production`, `deploy-preview`, …) |
+| Variable           | Used in                  | Purpose                                                    |
+| ------------------ | ------------------------ | ---------------------------------------------------------- |
+| `SITE_URL`         | `astro.config.mjs`       | Canonical site URL (e.g. `https://example.com`)            |
+| `SITE_TITLE`       | `src/consts.ts`          | Site name shown in header, meta, RSS                       |
+| `SITE_DESCRIPTION` | `src/consts.ts`          | Default meta description                                   |
+| `INFLUX_URL`       | `src/pages/api/track.ts` | InfluxDB write endpoint                                    |
+| `INFLUX_TOKEN`     | `src/pages/api/track.ts` | InfluxDB auth token                                        |
+| `INFLUX_ORG`       | `src/pages/api/track.ts` | InfluxDB organisation                                      |
+| `INFLUX_BUCKET`    | `src/pages/api/track.ts` | InfluxDB bucket                                            |
+| `CONTEXT`          | `src/pages/api/track.ts` | Netlify deploy context (`production`, `deploy-preview`, …) |
 
 **File loading order** (Astro/Vite):
+
 - `astro dev` → `.env.development` > `.env`
 - `astro build` → `.env.production` > `.env`
 - `.env.development` is committed with safe dev defaults.
 - `.env` and `.env.production` are gitignored (contain secrets).
 
 **How values reach the code**:
+
 - `astro.config.mjs` uses Vite's `loadEnv()` to read `SITE_URL` (config runs before Vite).
 - `src/consts.ts` reads `SITE_TITLE` / `SITE_DESCRIPTION` from `import.meta.env` with hardcoded fallbacks.
 - `src/pages/api/track.ts` reads InfluxDB vars from `process.env` at request time (SSR).
@@ -429,38 +437,46 @@ Configuration is driven by `.env` files loaded automatically by Astro/Vite.
 Triggers on PRs to `main` and pushes to `main`.
 
 **Job: `lint-and-test`**
+
 1. Checkout → Setup Node (from `.nvmrc`, npm cache) → `npm ci`
 2. `npm run lint`
 3. `npm test`
 
 **Job: `build`** (needs `lint-and-test`)
+
 1. Checkout → Setup Node → `npm ci`
 2. `npm run build`
 3. Upload `dist` artifact
 4. Upload `.netlify` artifact
 
 **Job: `deploy-preview`** (needs `build`, PRs only)
+
 - Calls reusable workflow `deploy-preview.yml`
 - Requires repo var `NETLIFY_SITE_ID` and secret `NETLIFY_AUTH_TOKEN`
 
 ### 13.2 Deploy Preview (`.github/workflows/deploy-preview.yml`)
 
 Reusable workflow (`workflow_call`).
+
 1. Downloads `dist` and `.netlify` artifacts.
 2. Deploys to Netlify (non-prod) via `netlify-cli deploy --dir=dist --no-build`.
 3. Posts/updates a PR comment with the preview URL using `actions/github-script`.
+
 - Permissions: `contents: read`, `pull-requests: write`, `issues: write`, `deployments: write`, `statuses: write`.
 
 ### 13.3 Production Deploy (`.github/workflows/deploy.yml`)
 
 Triggers on push to `main`.
+
 1. Checkout → Setup Node → `npm ci` → `npm run build`
 2. `netlify-cli deploy --dir=dist --no-build --prod`
+
 - Requires secret `NETLIFY_AUTH_TOKEN` and var `NETLIFY_SITE_ID`.
 
 ### 13.4 DNS Drift Check (`.github/workflows/dns-drift-check.yml`)
 
 Triggers on `workflow_dispatch` and daily cron (`0 0 * * *`).
+
 1. Installs `dnsutils` + `curl`.
 2. Verifies authoritative nameservers match expected DNS provider.
 3. Verifies A records for apex and www do not resolve to a previous hosting provider.
@@ -474,27 +490,27 @@ Triggers on `workflow_dispatch` and daily cron (`0 0 * * *`).
 
 ### 14.1 Netlify (`infra/netlify/`)
 
-| File | Purpose |
-|---|---|
-| `versions.tf` | Terraform ≥ 1.6, `netlify/netlify` provider `~> 0.4` |
-| `providers.tf` | Provider config (auth via `NETLIFY_TOKEN` env var) |
-| `variables.tf` | `team_slug`, `team_id`, `domain`, `site_id`, InfluxDB vars, tracking vars |
-| `main.tf` | `netlify_dns_zone` resource for root domain |
-| `env.tf` | `netlify_environment_variable` resources for InfluxDB and tracking config (production context) |
-| `outputs.tf` | Outputs `zone_id` and `nameservers` |
-| `terraform.tfvars.example` | Example variable values |
+| File                       | Purpose                                                                                        |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `versions.tf`              | Terraform ≥ 1.6, `netlify/netlify` provider `~> 0.4`                                           |
+| `providers.tf`             | Provider config (auth via `NETLIFY_TOKEN` env var)                                             |
+| `variables.tf`             | `team_slug`, `team_id`, `domain`, `site_id`, InfluxDB vars, tracking vars                      |
+| `main.tf`                  | `netlify_dns_zone` resource for root domain                                                    |
+| `env.tf`                   | `netlify_environment_variable` resources for InfluxDB and tracking config (production context) |
+| `outputs.tf`               | Outputs `zone_id` and `nameservers`                                                            |
+| `terraform.tfvars.example` | Example variable values                                                                        |
 
 **State**: Local backend (`terraform.tfstate`, gitignored).
 
 ### 14.2 Grafana (`infra/grafana/`)
 
-| File | Purpose |
-|---|---|
-| `versions.tf` | Terraform ≥ 1.5, `grafana/grafana` provider `~> 3.12`, local backend |
-| `main.tf` | Provider config, `grafana_folder` + dynamic `grafana_dashboard` from JSON files |
-| `variables.tf` | `grafana_url`, `grafana_api_token` (sensitive), `grafana_org_id`, `dashboard_folder`, `dashboards_path` |
-| `dashboards/` | Exported Grafana dashboard JSON files |
-| `terraform.tfvars.example` | Example variable values |
+| File                       | Purpose                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `versions.tf`              | Terraform ≥ 1.5, `grafana/grafana` provider `~> 3.12`, local backend                                    |
+| `main.tf`                  | Provider config, `grafana_folder` + dynamic `grafana_dashboard` from JSON files                         |
+| `variables.tf`             | `grafana_url`, `grafana_api_token` (sensitive), `grafana_org_id`, `dashboard_folder`, `dashboards_path` |
+| `dashboards/`              | Exported Grafana dashboard JSON files                                                                   |
+| `terraform.tfvars.example` | Example variable values                                                                                 |
 
 **State**: Local backend.
 

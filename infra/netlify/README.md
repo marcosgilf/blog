@@ -25,6 +25,7 @@ terraform apply -var="team_slug=<your-team>" -var="team_id=<your-team-id>"
 > `INFLUX_TOKEN` manually in the Netlify UI (production context).
 
 Optional variables:
+
 - `public_track_site_id` (default `blog`)
 - `public_track_enabled` (default `true`)
 
