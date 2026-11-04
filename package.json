@@ -19,8 +19,8 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "dependencies:check": "ncu -e 2",
-    "dependencies:update": "ncu -u && npm i",
+    "dependencies:check": "ncu -e 2 --reject @netlify/blobs",
+    "dependencies:update": "ncu -u --reject @netlify/blobs && npm i",
     "dev": "astro dev",
     "format": "biome format --write .",
     "lint": "biome lint .",
@@ -38,6 +38,7 @@
     "@astrojs/netlify": "^8.2.11",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
+    "@netlify/blobs": "^10.7.9",
     "astro": "^7.4.5"
   },
   "devDependencies": {
