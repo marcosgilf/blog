@@ -69,4 +69,3 @@ Why You'll Love It
 💪Autonomy and Agency: Contribute to the growth of one of the largest newsletters in the world.
 
 📥 If you're ready to make a tremendous impact at a bootstrapped and profitable startup, please apply. Please let us know if you need any accommodation during any part of the interview process.
-

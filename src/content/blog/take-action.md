@@ -1,4 +1,5 @@
 ---
+
 title: 'Take action'
 description: 'Learn the importance of taking action.'
 pubDate: 'Jan 30 2024'

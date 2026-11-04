@@ -18,6 +18,7 @@ This specification outlines the implementation of Playwright visual testing func
 ### 1. Dependencies and Setup
 
 #### Required Dependencies
+
 ```json
 {
   "devDependencies": {
@@ -28,6 +29,7 @@ This specification outlines the implementation of Playwright visual testing func
 ```
 
 #### Package.json Scripts
+
 ```json
 {
   "scripts": {
@@ -44,6 +46,7 @@ This specification outlines the implementation of Playwright visual testing func
 ### 2. Configuration Structure
 
 #### Playwright Configuration (`playwright.config.ts`)
+
 ```typescript
 import { defineConfig, devices } from '@playwright/test';
 
@@ -53,48 +56,46 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: [
-    ['html'],
-    ['json', { outputFile: 'test-results/results.json' }]
-  ],
+  reporter: [['html'], ['json', { outputFile: 'test-results/results.json' }]],
   use: {
     baseURL: 'http://localhost:3000', // Adjust port based on framework
     trace: 'on-first-retry',
-    screenshot: 'only-on-failure'
+    screenshot: 'only-on-failure',
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] }
+      use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] }
+      use: { ...devices['Desktop Firefox'] },
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] }
+      use: { ...devices['Desktop Safari'] },
     },
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] }
+      use: { ...devices['Pixel 5'] },
     },
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] }
-    }
+      use: { ...devices['iPhone 12'] },
+    },
   ],
   webServer: {
     command: 'npm run start', // Framework-agnostic start command
     port: 3000, // Adjust based on framework's default port
-    reuseExistingServer: !process.env.CI
-  }
+    reuseExistingServer: !process.env.CI,
+  },
 });
 ```
 
 ### 3. Test Structure and Organization
 
 #### Directory Structure
+
 ```
 tests/
 ├── visual/
@@ -124,12 +125,14 @@ tests/
 #### 4.1 Page-Level Visual Tests
 
 **Homepage Tests**
+
 - Hero/banner section with key visuals
 - Navigation elements
 - Content layout and typography
 - Responsive behavior across viewports
 
 **Content Listing Tests**
+
 - List/grid layouts
 - Item preview cards
 - Pagination components
@@ -137,6 +140,7 @@ tests/
 - Empty state displays
 
 **Content Detail Tests**
+
 - Content header sections
 - Main content rendering
 - Media handling (images, videos)
@@ -144,6 +148,7 @@ tests/
 - Related content sections
 
 **Static Page Tests**
+
 - About/contact page layouts
 - Information display consistency
 - Form elements and styling
@@ -151,6 +156,7 @@ tests/
 #### 4.2 Component-Level Visual Tests
 
 **Header/Navigation Component**
+
 - Logo/brand display
 - Navigation menu structures
 - Mobile responsive menus
@@ -158,12 +164,14 @@ tests/
 - Search components
 
 **Footer Component**
+
 - Content organization
 - Link groupings
 - Social media elements
 - Copyright and legal information
 
 **UI Components**
+
 - Button variations and states
 - Form input elements
 - Cards and containers
@@ -171,6 +179,7 @@ tests/
 - Loading states
 
 **Content Components**
+
 - Text formatting and typography
 - Code block styling (if applicable)
 - Table formatting
@@ -180,6 +189,7 @@ tests/
 #### 4.3 Layout Visual Tests
 
 **Page Layouts**
+
 - Header, main content, footer arrangement
 - Sidebar layouts
 - Grid systems
@@ -189,11 +199,13 @@ tests/
 ### 5. Responsive Testing Strategy
 
 #### Viewport Categories
+
 - **Desktop**: 1920x1080, 1366x768, 1024x768
 - **Tablet**: 768x1024, 834x1194
 - **Mobile**: 375x667, 414x896, 360x640
 
 #### Responsive Test Coverage
+
 - Navigation collapse/expand behaviors
 - Content reflow and stacking
 - Image and media scaling
@@ -203,18 +215,21 @@ tests/
 ### 6. Visual Testing Best Practices
 
 #### Snapshot Management
+
 - **Baseline Creation**: Generate initial snapshots on stable builds
 - **Update Strategy**: Systematic approach to updating snapshots
 - **Version Control**: Track snapshot changes in git
 - **Platform Consistency**: Ensure consistent rendering across environments
 
 #### Test Stability
+
 - **Wait Strategies**: Proper waiting for dynamic content loading
 - **Animation Handling**: Disable or wait for animations to complete
 - **Font Loading**: Ensure web fonts are loaded before capturing
 - **Network Stability**: Handle network-dependent content appropriately
 
 #### Performance Considerations
+
 - **Parallel Execution**: Run tests in parallel for faster feedback
 - **Selective Testing**: Test only affected components when possible
 - **Caching**: Cache dependencies and build artifacts
@@ -223,6 +238,7 @@ tests/
 ### 7. Integration with Development Workflow
 
 #### Pre-commit Hooks
+
 ```javascript
 // .husky/pre-commit or similar
 #!/usr/bin/env sh
@@ -234,6 +250,7 @@ npm run test:visual
 ```
 
 #### CI/CD Pipeline Integration
+
 ```yaml
 # Example GitHub Actions workflow
 name: Visual Testing
@@ -243,15 +260,15 @@ jobs:
   visual-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '18'
+          node-version: "26"
       - run: npm ci
       - run: npx playwright install --with-deps
       - run: npm run build
       - run: npm run test:visual
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: playwright-report
@@ -261,6 +278,7 @@ jobs:
 ### 8. Framework-Specific Configurations
 
 #### Common Development Servers and Ports
+
 - **Next.js**: Port 3000, command: `npm run dev` or `npm run start`
 - **React (CRA)**: Port 3000, command: `npm start`
 - **Vue.js**: Port 8080, command: `npm run serve`
@@ -271,6 +289,7 @@ jobs:
 - **Vite**: Port 5173, command: `npm run dev`
 
 #### Build Commands by Framework
+
 - **Next.js**: `npm run build`
 - **React**: `npm run build`
 - **Vue.js**: `npm run build`
@@ -283,6 +302,7 @@ jobs:
 ### 9. Test Examples
 
 #### Homepage Visual Test
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -303,6 +323,7 @@ test.describe('Homepage Visual Tests', () => {
 ```
 
 #### Component Visual Test
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -323,6 +344,7 @@ test.describe('Header Component Visual Tests', () => {
 ```
 
 #### Interactive Component Test
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -346,11 +368,13 @@ test.describe('Navigation Component Visual Tests', () => {
 ### 10. Reporting and Monitoring
 
 #### Test Reports
+
 - **HTML Reports**: Interactive reports with before/after comparisons
 - **JSON Reports**: Machine-readable data for integrations
 - **Screenshot Artifacts**: Failed test screenshots for debugging
 
 #### Monitoring and Alerts
+
 - **CI/CD Notifications**: Slack/email alerts for visual regression failures
 - **Dashboard Integration**: Visual testing metrics in project dashboards
 - **Trend Analysis**: Track visual stability over time
@@ -358,12 +382,14 @@ test.describe('Navigation Component Visual Tests', () => {
 ### 11. Maintenance and Updates
 
 #### Regular Maintenance Tasks
+
 - **Snapshot Updates**: Review and approve legitimate visual changes
 - **Test Cleanup**: Remove obsolete tests for deprecated features
 - **Performance Optimization**: Monitor and optimize test execution time
 - **Dependency Updates**: Keep Playwright and related tools updated
 
 #### Documentation Updates
+
 - **Test Coverage Maps**: Document which pages/components are tested
 - **Troubleshooting Guides**: Common issues and solutions
 - **Onboarding Materials**: Help new team members understand visual testing
@@ -371,6 +397,7 @@ test.describe('Navigation Component Visual Tests', () => {
 ### 12. Framework Migration Considerations
 
 #### When Changing Frameworks
+
 1. **Update Configuration**: Adjust port numbers and build/start commands
 2. **Review Test Selectors**: Update component selectors if HTML structure changes
 3. **Validate Snapshots**: Re-baseline all visual snapshots
@@ -378,6 +405,7 @@ test.describe('Navigation Component Visual Tests', () => {
 5. **Test Coverage**: Verify all critical paths are still covered
 
 #### Portable Test Patterns
+
 - Use semantic HTML and data attributes for reliable selectors
 - Focus on user-visible elements rather than implementation details
 - Structure tests around user journeys and business functionality
